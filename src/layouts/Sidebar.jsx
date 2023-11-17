@@ -1,6 +1,4 @@
-import { Route, Routes } from "react-router-dom";
-
-
+import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   return(
@@ -9,9 +7,6 @@ export default function Sidebar() {
       <aside
         className="hidden min-[840px]:flex fixed top-0 left-0 flex-col justify-between items-center bg-[#272C49] h-screen px-[14px] py-[40px] max-w-[80px]"
       >
-        <Routes>
-          <Route />
-        </Routes>
         <a href="../index.html">
           <img
             src="../assets/icons/only-baby-logo.png"

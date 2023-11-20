@@ -1,6 +1,6 @@
 export default function Signup(){
   return(
-    <div className="bg-[url('images/blue-background.webp')]  bg-no-repeat bg-center bg-cover 
+    <div className="bg-[url('assets/images/blue-background.webp')]  bg-no-repeat bg-center bg-cover 
     w-full h-auto lg:h-screen flex justify-center items-center px-4 py-20">
 
     <form id="signup_form" className="flex flex-col lg:flex-row justify-center gap-x-10 gap-y-4 bg-white w-full max-w-[1064px] h-auto rounded-[24px] md:rounded-[40px] py-[20px] md:py-[24px] lg:py-[32px] px-[24px] md:px-[32px] lg:px-[40px] select-none">
@@ -44,8 +44,8 @@ export default function Signup(){
           <div className="flex justify-between">
             <div className="flex gap-x-[10px] items-center">
               <span className="text-[#474F7C] text-sm md:text-base ml-0.5">Saya Menerima
-                <a href="" className="font-semibold">Ketentuan </a> &
-                <a href="" className="font-semibold">Kebijakan Privasi </a>
+              <a href="" className="font-semibold mx-1">Ketentuan</a> &
+              <a href="" className="font-semibold mx-1">Kebijakan Privasi</a>
               </span>
             </div>
 

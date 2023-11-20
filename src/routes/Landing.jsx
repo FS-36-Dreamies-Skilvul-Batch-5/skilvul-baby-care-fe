@@ -1,13 +1,17 @@
-import Navbar from "../layouts/Navbar"
+import Navbar from "../layouts/Navbar";
+import HeroSection from "../components/sections/HeroSection";
+import OurFeatures from "../components/sections/OurFeatures";
 
 export default function Landing() {
   return (
     <>
       <Navbar/>
       
-      <div>
-        <h1 className="text-3xl font-bold text-amber-500">Landing Page</h1>
-      </div>
+      <HeroSection />
+
+      <OurFeatures />
+
+
     </>
   )
 }

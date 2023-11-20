@@ -1,5 +1,4 @@
-import GetStartedButton from "../components/buttons/GetStartedButton";
-import DashboardButton from "../components/buttons/DashboardButton";
+import NavbarButton from "../components/landing/buttons/NavbarButton";
 import { Link } from 'react-router-dom';
 
 export default function Navbar(){
@@ -16,15 +15,14 @@ export default function Navbar(){
         <nav className="hidden lg:block">
           <ul className="flex items-center gap-x-10">
             <li><Link to="/" className="text-white hover:text-[#FFCB40] duration-300 ease-in-out">Home</Link></li>
-            <li><Link to="/features" className="text-white hover:text-[#FFCB40] duration-300 ease-in-out">Features</Link></li>
+            <li><Link to="#features" className="text-white hover:text-[#FFCB40] duration-300 ease-in-out">Features</Link></li>
             <li><Link to="/articles" className="text-white hover:text-[#FFCB40] duration-300 ease-in-out">Articles</Link></li>
-            <li><Link to="/reviews" className="text-white hover:text-[#FFCB40] duration-300 ease-in-out">Reviews</Link></li>
+            <li><Link to="#reviews" className="text-white hover:text-[#FFCB40] duration-300 ease-in-out">Reviews</Link></li>
           </ul>
         </nav>
 
         <div className="hidden lg:block">
-          <GetStartedButton />
-          <DashboardButton />
+          <NavbarButton />
         </div>
 
         {/* Mobile */}
@@ -45,9 +43,9 @@ export default function Navbar(){
             <nav>
               <ul className="flex flex-col justify-center items-center gap-y-6">
                 <li><Link to="/" className="text-xl text-white hover:text-[#FFCB40] duration-300 ease-in-out">Home</Link></li>
-                <li><Link to="/features" className="text-xl text-white hover:text-[#FFCB40] duration-300 ease-in-out">Features</Link></li>
+                <li><Link to="#features" className="text-xl text-white hover:text-[#FFCB40] duration-300 ease-in-out">Features</Link></li>
                 <li><Link to="/articles" className="text-xl text-white hover:text-[#FFCB40] duration-300 ease-in-out">Articles</Link></li>
-                <li><Link to="/reviews" className="text-xl text-white hover:text-[#FFCB40] duration-300 ease-in-out">Reviews</Link></li>
+                <li><Link to="#reviews" className="text-xl text-white hover:text-[#FFCB40] duration-300 ease-in-out">Reviews</Link></li>
                 <span className="w-[120px] border-t-2 border-[#FFCB40]"></span>
                 <li><Link to="/signup" className="text-xl text-white hover:text-[#FFCB40] duration-300 ease-in-out">Get Started</Link></li>
                 <li><Link to="/dashboard/index" className="text-xl text-white hover:text-[#FFCB40] duration-300 ease-in-out">Dashboard</Link></li>

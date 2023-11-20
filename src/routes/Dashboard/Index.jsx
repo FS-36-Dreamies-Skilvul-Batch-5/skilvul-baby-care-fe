@@ -40,7 +40,7 @@ export default function Index() {
                   </div>
                 </div>
                 <div className="flex-1 flex justify-center items-center">
-                  <img className="w-full max-w-[190px] sm:max-w-[250px] object-contain" src="assets/images/teddy-bear.png" alt="Teddy Bear Image"></img>
+                  <img className="w-full max-w-[190px] sm:max-w-[250px] object-contain" src="images/teddy-bear.png" alt="Teddy Bear Image"></img>
                 </div>
               </div>
 
@@ -67,7 +67,7 @@ export default function Index() {
                 {/* Berat (Active) */}
                 <Link to="/BabyChart?chart=berat" className="w-full block">
                   <div className="flex flex-col w-full bg-[#DFF1FF] p-[32px] rounded-2xl gap-y-3 shadow-[0_2px_4px_0px_rgba(0,0,0,0.10)]">
-                    <img src="assets/icons/berat-badan.png" alt="Berat Badan" className="h-[40px] object-contain"></img>
+                    <img src="icons/berat-badan.png" alt="Berat Badan" className="h-[40px] object-contain"></img>
                     <div className="flex flex-col justify-center text-center">
                       <span>Berat</span>
                       <div className="w-full flex justify-center items-end gap-1 text-[#54ABF0]">
@@ -80,7 +80,7 @@ export default function Index() {
                 {/* Tinggi (Active) */}
                 <Link to="/BabyChart?chart=tinggi" className="w-full block">
                   <div className="flex flex-col w-full bg-[#FFF6DF] p-[32px] rounded-2xl gap-y-3 shadow-[0_2px_4px_0px_rgba(0,0,0,0.10)]">
-                    <img src="assets/icons/tinggi-badan.png" alt="Tinggi Badan" className="h-[40px] object-contain"></img>
+                    <img src="icons/tinggi-badan.png" alt="Tinggi Badan" className="h-[40px] object-contain"></img>
                     <div className="flex flex-col justify-center text-center">
                       <span>Tinggi</span>
                       <div className="w-full flex justify-center items-end gap-1 text-[#F5C952]">
@@ -93,7 +93,7 @@ export default function Index() {
                 {/* L. Kepala (Active) */}
                 <Link to="/BabyChart?chart=lingkar_kepala" className="w-full block">
                 <div className="flex flex-col w-full bg-[#E3FFDA] p-[32px] rounded-2xl gap-y-3 shadow-[0_2px_4px_0px_rgba(0,0,0,0.10)]">
-                    <img src="assets/icons/lingkar-kepala.png" alt="Lingkar Kepala" className="h-[40px] object-contain"></img>
+                    <img src="icons/lingkar-kepala.png" alt="Lingkar Kepala" className="h-[40px] object-contain"></img>
                     <div className="flex flex-col justify-center text-center">
                       <span>L. Kepala</span>
                       <div className="w-full flex justify-center items-end gap-1 text-[#6BD147]">
@@ -145,7 +145,7 @@ export default function Index() {
           {/* begin::Right Dashboard */}
           <div className="p-6 sm:p-8 min-[840px]:p-10 flex flex-col w-full xl:max-w-[435px] bg-white shadow-[0_4px_8px_0px_rgba(0,0,0,0.10)] gap-y-10 xl:gap-y-[14px] min-[1600px]:gap-y-[30px] rounded-2xl xl:rounded-none">
             <div className="flex items-center gap-x-3">
-              <img src="assets/images/users/brenda-s.png" alt="User's Profile Picture" className="w-[50px] h-[50px] shrink-0 rounded-full"></img>
+              <img src="images/users/brenda-s.png" alt="User's Profile Picture" className="w-[50px] h-[50px] shrink-0 rounded-full"></img>
               <div>
                 <h1 id="user_full_name" className="font-semibold text-[#272C49] text-lg"></h1>
                 {/* <div className="flex gap-x-1 -mt-[1px]">

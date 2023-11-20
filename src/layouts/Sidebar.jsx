@@ -9,7 +9,7 @@ export default function Sidebar() {
       >
         <Link to="/Index">
           <img
-            src="assets/icons/only-baby-logo.png"
+            src="icons/only-baby-logo.png"
             alt="Only Baby Care Logo"
             className="w-[50px] aspect-square object-contain"
           ></img>
@@ -160,7 +160,7 @@ export default function Sidebar() {
         </button>
         <Link to="/Index">
         <img
-            src="assets/icons/only-baby-logo.png"
+            src="icons/only-baby-logo.png"
             alt="Only Baby Care Logo"
             className="w-[36px] aspect-square object-contain"
           ></img>

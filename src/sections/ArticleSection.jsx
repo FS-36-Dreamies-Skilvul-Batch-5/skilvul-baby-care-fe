@@ -1,4 +1,4 @@
-import Heading from "../components/landing/heading/Heading";
+import Heading from "../components/landing/headings/Heading";
 import TopArticleList from "../components/landing/lists/TopArticleList";
 
 export default function ArticleSection() {

@@ -1,4 +1,4 @@
-import NavbarButton from "../components/landing/button/NavbarButton";
+import NavbarButton from "../components/landing/buttons/NavbarButton";
 import { Link } from 'react-router-dom';
 
 export default function Navbar(){

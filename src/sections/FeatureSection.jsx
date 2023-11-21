@@ -1,5 +1,5 @@
-import Heading from "../components/landing/heading/Heading";
-import FeatureDecoration from "../components/landing/decoration/FeatureDecoration";
+import Heading from "../components/landing/headings/Heading";
+import FeatureDecoration from "../components/landing/decorations/FeatureDecoration";
 import FeatureList from "../components/landing/lists/FeatureList";
 
 export default function FeatureSection() {

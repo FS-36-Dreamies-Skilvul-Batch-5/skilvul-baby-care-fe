@@ -1,4 +1,4 @@
-import ArticleCategoryBadge from "../badge/ArticleCategoryBadge";
+import ArticleCategoryBadge from "../badges/ArticleCategoryBadge";
 
 export default function SmallArticleCard() {
   return (

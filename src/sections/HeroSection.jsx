@@ -21,7 +21,7 @@ export default function HeroSection() {
             <p className="text-[#36455B] text-base lg:text-lg text-center lg:text-start w-full max-w-[500px] lg:w-auto mx-auto lg:mx-0">Bergabung bersama kami dan mulailah perjalanan menuju optimalisasi nutrisi & gizi anak</p>
           </div>
         <div className="lg:flex-1 flex justify-center items-center">
-          <img src="images/mother-baby-circle.webp" alt="Mother & Baby" className="w-full max-w-[300px] lg:max-w-[500px] h-auto aspect-square object-contain rounded-full"></img>
+          <img src="assets/images/mother-baby-circle.webp" alt="Mother & Baby" className="w-full max-w-[300px] lg:max-w-[500px] h-auto aspect-square object-contain rounded-full"></img>
         </div>
       </main>
     </section>

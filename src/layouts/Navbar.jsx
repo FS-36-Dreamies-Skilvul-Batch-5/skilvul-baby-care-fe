@@ -1,4 +1,4 @@
-import NavbarButton from "../components/landing/buttons/NavbarButton";
+import NavbarButton from "../components/landing/button/NavbarButton";
 import { Link } from 'react-router-dom';
 
 export default function Navbar(){
@@ -8,7 +8,7 @@ export default function Navbar(){
     <header className="absolute w-full bg-[#272C49]">
       <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center py-3.5">
         <div className="shrink-0">
-          <img src="icons/baby-care-logo.png" alt="Baby Care Logo" className="w-40 md:w-44 lg:w-48"></img>
+          <img src="assets/icons/baby-care-logo.png" alt="Baby Care Logo" className="w-40 md:w-44 lg:w-48"></img>
         </div>
 
         {/* Desktop */}

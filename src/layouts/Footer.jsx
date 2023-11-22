@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
-export default function Footer() {
+export default function Footer({ logoPath, facebookPath, instagramPath, twitterPath, youtubePath }) {
   return (
     <footer className="w-full bg-[#272C49]">
       <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-12 flex flex-col justify-between items-center py-10 lg:py-14 gap-y-10">
         <div className="w-full flex flex-col gap-y-5">
           <div className="order-1">
-            <img src="assets/icons/baby-care-logo.png" alt="Baby Care Logo" className="w-40 md:w-44 lg:w-48"></img>
+          <img src={logoPath} alt="Baby Care Logo" className="w-40 md:w-44 lg:w-48"></img>
           </div>
           <div className="order-2 flex flex-col -mt-3">
             <span className="text-sm lg:text-base text-white">Alamat: 123 Sprout Street, Nurtureville, Babyland, Nutritionia, 12345, NourishVille</span>
@@ -15,17 +15,18 @@ export default function Footer() {
           </div>
           <div className="order-4 lg:order-3 flex justify-start lg:justify-end items-center gap-x-6">
             <a href="#">
-              <img src="assets/icons/facebook.png" alt="Facebook" className="w-[28px] lg:w-[35px]"></img>
+              <img src={facebookPath} alt="Facebook" className="w-[28px] lg:w-[35px]"></img>
             </a>
             <a href="#">
-              <img src="assets/icons/instagram.png" alt="Instagram" className="w-[28px] lg:w-[35px]"></img>
+              <img src={instagramPath} alt="Instagram" className="w-[28px] lg:w-[35px]"></img>
             </a>
             <a href="#">
-              <img src="assets/icons/twitter.png" alt="Twitter" className="w-[28px] lg:w-[35px]"></img>
+              <img src={twitterPath} alt="Twitter" className="w-[28px] lg:w-[35px]"></img>
             </a>
             <a href="#">
-              <img src="assets/icons/youtube.png" alt="Youtube" className="w-[28px] lg:w-[35px]"></img>
+              <img src={youtubePath} alt="Youtube" className="w-[28px] lg:w-[35px]"></img>
             </a>
+
           </div>
           <nav className="order-3 lg:order-4">
             <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-y-3 gap-x-10">

@@ -6,7 +6,7 @@ import Footer from "../../layouts/Footer";
 export default function Articles(){
   return(
     <div className="bg-[#F9FBFD] overflow-x-hidden">
-      <Navbar/>
+      <Navbar logoPath="assets/icons/baby-care-logo.png" />
 
       <section className="w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-12">
         <div className="flex flex-col h-auto py-40 gap-14">
@@ -141,7 +141,13 @@ export default function Articles(){
         </div>
         </div>
       </section>
-      <Footer />
+      <Footer
+        logoPath="assets/icons/baby-care-logo.png"
+        facebookPath="assets/icons/facebook.png"
+        instagramPath="assets/icons/instagram.png"
+        twitterPath="assets/icons/twitter.png"
+        youtubePath="assets/icons/youtube.png"
+      /> 
     </div>
   );
 }

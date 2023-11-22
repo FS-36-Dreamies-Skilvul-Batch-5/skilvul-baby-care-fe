@@ -1,7 +1,7 @@
 import Navbar from "../../layouts/Navbar";
-import { Link } from 'react-router-dom';
 import Heading from "../../components/landing/headings/Heading";
 import ArticleList from "../../components/landing/lists/ArticleList";
+import Footer from "../../layouts/Footer";
 
 export default function Articles(){
   return(
@@ -141,6 +141,7 @@ export default function Articles(){
         </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

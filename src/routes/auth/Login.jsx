@@ -2,7 +2,7 @@ export default function Login() {
   return (
     <div
       className="
-    bg-[url('/images/blue-background.webp')] 
+    bg-[url('assets/images/blue-background.webp')] 
     bg-no-repeat bg-center bg-cover 
     w-full h-auto lg:h-screen 
     flex justify-center items-center 
@@ -11,7 +11,7 @@ export default function Login() {
       <div className="flex flex-col lg:flex-row justify-center gap-x-10 gap-y-4 bg-white w-full max-w-[1064px] h-auto rounded-[24px] md:rounded-[40px] p-[24px] md:p-[32px] lg:p-[40px] select-none">
         <div className="w-full lg:w-auto flex-auto lg:flex-1 flex justify-start lg:justify-center items-center self-center">
           <img
-            src="images/mother-baby.webp"
+            src="assets/images/mother-baby.webp"
             className="aspect-square w-[360px] lg:w-full"
             alt="Mother and Baby"
           ></img>

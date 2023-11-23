@@ -26,7 +26,6 @@ export default function Footer({ logoPath, facebookPath, instagramPath, twitterP
             <a href="#">
               <img src={youtubePath} alt="Youtube" className="w-[28px] lg:w-[35px]"></img>
             </a>
-
           </div>
           <nav className="order-3 lg:order-4">
             <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-y-3 gap-x-10">

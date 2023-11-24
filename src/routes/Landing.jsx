@@ -8,7 +8,7 @@ import Footer from "../layouts/Footer";
 export default function Landing() {
   return (
     <div className="bg-[#F9FBFD] overflow-x-hidden">
-      <Navbar/>
+      <Navbar logoPath="assets/icons/baby-care-logo.png" />
 
       <HeroSection />
 
@@ -18,7 +18,13 @@ export default function Landing() {
 
       <ReviewSection />
 
-      <Footer />      
+      <Footer
+        logoPath="assets/icons/baby-care-logo.png"
+        facebookPath="assets/icons/facebook.png"
+        instagramPath="assets/icons/instagram.png"
+        twitterPath="assets/icons/twitter.png"
+        youtubePath="assets/icons/youtube.png"
+      />  
     </div>
   )
 }

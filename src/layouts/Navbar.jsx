@@ -8,7 +8,7 @@ export default function Navbar({ logoPath }){
     <header className="absolute w-full bg-[#272C49]">
       <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-12 flex justify-between items-center py-3.5">
         <div className="shrink-0">
-          <img src={logoPath} alt="Baby Care Logo" className="w-40 md:w-44 lg:w-48"></img>
+        <img src={logoPath} alt="Baby Care Logo" className="w-40 md:w-44 lg:w-48"></img>
         </div>
 
         {/* Desktop */}

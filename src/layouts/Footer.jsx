@@ -6,7 +6,7 @@ export default function Footer({ logoPath, facebookPath, instagramPath, twitterP
       <div className="w-full max-w-[1280px] mx-auto px-4 md:px-8 lg:px-12 flex flex-col justify-between items-center py-10 lg:py-14 gap-y-10">
         <div className="w-full flex flex-col gap-y-5">
           <div className="order-1">
-            <img src={logoPath} alt="Baby Care Logo" className="w-40 md:w-44 lg:w-48"></img>
+          <img src={logoPath} alt="Baby Care Logo" className="w-40 md:w-44 lg:w-48"></img>
           </div>
           <div className="order-2 flex flex-col -mt-3">
             <span className="text-sm lg:text-base text-white">Alamat: 123 Sprout Street, Nurtureville, Babyland, Nutritionia, 12345, NourishVille</span>

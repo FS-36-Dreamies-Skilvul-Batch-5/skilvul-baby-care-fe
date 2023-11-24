@@ -24,7 +24,7 @@ export default function Landing() {
         instagramPath="assets/icons/instagram.png"
         twitterPath="assets/icons/twitter.png"
         youtubePath="assets/icons/youtube.png"
-      />   
+      />  
     </div>
   )
 }

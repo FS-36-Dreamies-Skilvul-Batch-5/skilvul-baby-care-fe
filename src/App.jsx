@@ -8,6 +8,11 @@ import Landing from "./routes/Landing";
 import Articles from "./routes/article/Articles";
 import DetailArticle from "./routes/article/DetailArticle";
 
+import Main from "./routes/dashboardFE/Main";
+import BabyChart from "./routes/dashboardFE/BabyCart";
+import BabyData from "./routes/dashboardFE/BabyData";
+import Immunization from "./routes/dashboardFE/Immunization";
+
 export default function App() {
   return (
     <>
@@ -19,6 +24,11 @@ export default function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<DetailArticle />} />
+
+        <Route path="/dashboard/main" element={<Main />} />
+        <Route path="/dashboard/babyChart" element={<BabyChart />} />
+        <Route path="/dashboard/babyData" element={<BabyData />} />
+        <Route path="/dashboard/immunization" element={<Immunization/>}/>
       </Routes>
     </>
   )

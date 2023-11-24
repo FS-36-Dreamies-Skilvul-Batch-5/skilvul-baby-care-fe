@@ -7,9 +7,9 @@ export default function Sidebar() {
       <aside
         className="hidden min-[840px]:flex fixed top-0 left-0 flex-col justify-between items-center bg-[#272C49] h-screen px-[14px] py-[40px] max-w-[80px]"
       >
-        <Link to="/Index">
+        <Link to="/dashboard/main">
           <img
-            src="assets/icons/only-baby-logo.png"
+            src="../assets/icons/only-baby-logo.png"
             alt="Only Baby Care Logo"
             className="w-[50px] aspect-square object-contain"
           ></img>
@@ -17,7 +17,7 @@ export default function Sidebar() {
         <nav>
           <ul className="flex flex-col justify-center items-center gap-y-[54px]">
             <li>
-              <Link to="/Index">
+              <Link to="/dashboard/main">
               <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="28"
@@ -45,7 +45,7 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link to="/BabyData">
+              <Link to="/dashboard/babyData">
               <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="28"
@@ -73,7 +73,7 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link to="/BabyChart">
+              <Link to="/dashboard/babyChart">
               <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -101,7 +101,7 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link to="/Immunization">
+              <Link to="/dashboard/immunization">
               <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="28"
@@ -158,12 +158,12 @@ export default function Sidebar() {
             <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
           </svg>
         </button>
-        <Link to="/Index">
+        <Link to="/dashboard/main">
         <img
-            src="assets/icons/only-baby-logo.png"
-            alt="Only Baby Care Logo"
-            className="w-[36px] aspect-square object-contain"
-          ></img>
+          src="../assets/icons/only-baby-logo.png"
+          alt="Only Baby Care Logo"
+          className="w-[36px] aspect-square object-contain"
+        ></img>
         </Link>
 
         {/* begin::Mobile Modal */}
@@ -183,7 +183,7 @@ export default function Sidebar() {
             <nav className="w-full">
               <ul className="flex flex-col justify-between items-center">
                 <li className="w-full">
-                <Link to="/Index">
+                <Link to="/dashboard/main">
                 <div className="w-full flex justify-start items-center gap-x-4 px-5 py-5 border-b border-white/20">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -215,7 +215,7 @@ export default function Sidebar() {
                   
                 </li>
                 <li className="w-full">
-                <Link to="/BabyData">
+                <Link to="/dashboard/babyData">
                 <div className="w-full flex justify-start items-center gap-x-4 px-5 py-5 border-b border-white/20">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +280,7 @@ export default function Sidebar() {
                   
                 </li>
                 <li className="w-full">
-                <Link to="/Immunization">
+                <Link to="/dashboard/immunization">
                 <div className="w-full flex justify-start items-center gap-x-4 px-5 py-5 border-b border-white/20">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

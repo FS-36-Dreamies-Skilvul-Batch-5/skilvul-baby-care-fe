@@ -31,9 +31,9 @@ export default function Articles(){
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                     />
                   </svg>
@@ -51,8 +51,9 @@ export default function Articles(){
                     id="kategori"
                     name="kategori"
                     className="w-full rounded-lg border-none text-sm text-gray-400 px-4 py-3.5 shadow-[0_2px_4px_0_rgba(0,0,0,0.10)] focus:outline-none appearance-none"
+                    defaultValue="kategori"
                   >
-                    <option value="kategori" className="text-sm" selected>Kategori</option>
+                    <option value="kategori" className="text-sm">Kategori</option>
                     <option value="tips" className="text-sm">Tips</option>
                     <option value="stimulasi" className="text-sm">Stimulasi</option>
                     <option value="nutrisi" className="text-sm">Nutrisi</option>
@@ -83,9 +84,9 @@ export default function Articles(){
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="4"
                       d="M15 19l-7-7 7-7"
                     />
                   </svg>
@@ -129,9 +130,9 @@ export default function Articles(){
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="4"
                       d="M9 5l7 7-7 7"
                     />
                   </svg>

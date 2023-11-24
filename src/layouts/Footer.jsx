@@ -30,9 +30,9 @@ export default function Footer({ logoPath, facebookPath, instagramPath, twitterP
           <nav className="order-3 lg:order-4">
             <ul className="flex flex-col lg:flex-row items-start lg:items-center gap-y-3 gap-x-10">
               <li><Link to="/" className="text-white text-sm lg:text-base hover:text-[#FFCB40] duration-300 ease-in-out">Home</Link></li>
-              <li><Link to="#features" className="text-white text-sm lg:text-base hover:text-[#FFCB40] duration-300 ease-in-out">Features</Link></li>
+              <li><Link to="/#features" className="text-white text-sm lg:text-base hover:text-[#FFCB40] duration-300 ease-in-out">Features</Link></li>
               <li><Link to="/articles" className="text-white text-sm lg:text-base hover:text-[#FFCB40] duration-300 ease-in-out">Articles</Link></li>
-              <li><Link to="#reviews" className="text-white text-sm lg:text-base hover:text-[#FFCB40] duration-300 ease-in-out">Reviews</Link></li>
+              <li><Link to="/#reviews" className="text-white text-sm lg:text-base hover:text-[#FFCB40] duration-300 ease-in-out">Reviews</Link></li>
             </ul>
           </nav>
         </div>

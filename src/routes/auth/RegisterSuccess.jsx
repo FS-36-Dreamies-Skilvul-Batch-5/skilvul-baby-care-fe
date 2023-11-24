@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 export default function RegisterSuccess() {
   return (
     <div className="
       bg-[url('assets/images/blue-background.webp')] 
       bg-no-repeat bg-center bg-cover 
-      w-full h-auto lg:h-screen 
+      w-full h-auto lg:h-screen
       flex justify-center items-center 
       px-4 py-20"
     >
@@ -17,11 +19,11 @@ export default function RegisterSuccess() {
           <p className="text-[#272C49] text-sm md:text-base text-center mb-1">Jangan Lupa untuk cek inbox email mu untuk <br className="hidden md:block" />mengaktivasi akun</p>
         </div>
 
-        <a className="w-full max-w-[460px] flex" href="login.html">
+        <Link className="w-full max-w-[460px] flex" to={"/login"}>
           <button className="w-full bg-[#1E3465] text-white text-base font-semibold rounded-md py-3">
             Go to Login Page
           </button>
-        </a>
+        </Link>
       </div>
     </div>
   );

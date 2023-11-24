@@ -1,4 +1,49 @@
+import { useState } from "react";
+
 export default function Login() {
+  const [loginFormData, setLoginFormData] = useState({
+    email: '',
+    password: '',
+    rememberMe: false
+  });
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+
+  const handleInputChange = (event) => {
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+
+    setLoginFormData({
+      ...loginFormData,
+      [event.target.name] : value
+    })
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+
+    try{
+      const response = await fetch('http://localhost:3000/auth/login', {
+        method: 'POST',
+        headers: {'content-type':'application/json'},
+        body: JSON.stringify(loginFormData)
+      })
+    
+      if (!response.ok) {
+        setShowErrorMessage(true);
+        return;
+      }
+
+      const data = await response.json();
+      setShowErrorMessage(false);
+      console.log(data);
+      // Store in LS
+      localStorage.setItem('user_id', data.userId);
+      // Redirect to landing
+      window.location.replace("/");
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <div
       className="
@@ -19,6 +64,7 @@ export default function Login() {
 
         <form
           id="login_form"
+          onSubmit={submit}
           className="flex-1 flex flex-col justify-center items-start gap-y-[30px] self-stretch"
         >
           <div className="-ml-1">
@@ -31,7 +77,7 @@ export default function Login() {
 
             <span
               id="error_msg"
-              className="hidden absolute text-red-500 text-sm ml-1"
+              className={`${showErrorMessage ? 'block' : 'hidden'} absolute text-red-500 text-sm ml-1`}
             >
               Username atau Password salah!
             </span>
@@ -39,12 +85,13 @@ export default function Login() {
 
           <div className="w-full flex flex-col gap-y-[20px]">
             <input
-              id="username_field"
-              type="text"
+              id="email_field"
+              type="email"
               className="w-full px-[10px] py-[14px] focus:outline-none border-b border-[#BDCAE6] text-[#474F7C] placeholder:text-[#BDCAE6]"
-              name="username"
-              placeholder="Username or email"
-              pattern="[a-z]+"
+              name="email"
+              placeholder="Email"
+              value={loginFormData.email}
+              onChange={handleInputChange}
               required
             ></input>
             <input
@@ -53,6 +100,8 @@ export default function Login() {
               className="w-full px-[10px] py-[14px] focus:outline-none border-b border-[#BDCAE6] text-[#474F7C] placeholder:text-[#BDCAE6]"
               name="password"
               placeholder="Password"
+              value={loginFormData.password}
+              onChange={handleInputChange}
               required
             ></input>
           </div>
@@ -62,8 +111,10 @@ export default function Login() {
               <div className="flex gap-x-[10px] items-center">
                 <input
                   type="checkbox"
-                  name="remember_me"
+                  name="rememberMe"
                   id="remember_me"
+                  checked={loginFormData.rememberMe}
+                  onChange={handleInputChange}
                   className="scale-[1.2] ml-0.5 cursor-pointer text-sm md:text-base"
                 ></input>
                 <label

@@ -1,6 +1,6 @@
 import Sidebar from "../../layouts/Sidebar"
 import Heading from "../../components/dashboard/headings/Heading"
-import ParameterGiziCard from "../../components/dashboard/cards/ParameterGiziCard"
+import NutritionParameterCard from "../../components/dashboard/cards/NutritionParameterCard"
 
 export default function BabyChart() {
   return (
@@ -18,7 +18,7 @@ export default function BabyChart() {
           </div>
 
           {/* begin::Parameter Pertumbuhan */}
-          <ParameterGiziCard/>
+          <NutritionParameterCard/>
           {/* end::Parameter  Pertumbuhan */}
 
           {/* begin::Chart */}

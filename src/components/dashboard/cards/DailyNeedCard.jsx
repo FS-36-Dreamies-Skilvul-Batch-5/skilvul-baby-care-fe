@@ -1,4 +1,4 @@
-const KebutuhanHarianCard = ({mainText, subText, desk}) => {
+const DailyNeedCard = ({mainText, subText, desk}) => {
   return(
     <div className="flex flex-col w-full bg-white justify-center text-center p-[32px] rounded-2xl gap-y-2 shadow-[0_2px_4px_0px_rgba(0,0,0,0.10)]">
       <span className="text-[#898989]">{mainText}</span>
@@ -10,4 +10,4 @@ const KebutuhanHarianCard = ({mainText, subText, desk}) => {
   )
 }
   
-  export default KebutuhanHarianCard;
+  export default DailyNeedCard;

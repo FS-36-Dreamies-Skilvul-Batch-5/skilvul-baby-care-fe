@@ -1,4 +1,4 @@
-export default function StatusGizi(){
+export default function NutritionStatusCard(){
   return(
     <>
       <div className="flex flex-col w-full bg-[#272C49] justify-center items-center text-center p-[26px] rounded-[16px] gap-y-2 shadow-[0_2px_4px_0px_rgba(0,0,0,0.10)]">

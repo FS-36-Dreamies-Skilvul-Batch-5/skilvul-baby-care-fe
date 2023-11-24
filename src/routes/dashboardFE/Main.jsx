@@ -1,10 +1,10 @@
 import Sidebar from "../../layouts/Sidebar";
-import Welcomming from "../../components/dashboard/Welcomming";
+import Welcoming from "../../components/dashboard/Welcoming";
 import SmallHeading from "../../components/dashboard/headings/SmallHeading";
-import ParameterGiziCard from "../../components/dashboard/cards/ParameterGiziCard";
-import KebutuhanHarianCard from "../../components/dashboard/cards/KebutuhanHarianCard";
+import NutritionParameterCard from "../../components/dashboard/cards/NutritionParameterCard";
+import DailyNeedCard from "../../components/dashboard/cards/DailyNeedCard";
 import Profile from "../../components/dashboard/Profile";
-import StatusGiziCard from "../../components/dashboard/cards/StatusGiziCard";
+import NutritionStatusCard from "../../components/dashboard/cards/NutritionStatusCard";
 import ImmunizationList from "../../components/dashboard/links/ImmunizationLink";
 
 
@@ -22,20 +22,20 @@ export default function Main() {
             {/* begin::Welcoming */}
             
             {/* begin::Welcoming */}
-            <Welcomming/>
+            <Welcoming/>
             {/* begin::Dashboard */}
             <SmallHeading text="Dashboard" desk="-"/>
 
-            <ParameterGiziCard/>
+            <NutritionParameterCard/>
             {/* end::Dashboard */}
 
             {/* begin::Kebutuhan harian */}
             <SmallHeading text="Kebutuhan Harian" ket="berdasarkan data terakhir yang diinput"/>
 
             <div className="flex flex-col min-[840px]:flex-row flex-between gap-x-[25px] gap-y-[20px]">
-              <KebutuhanHarianCard mainText="Cairan" subText="500" desk="ml"/>
-              <KebutuhanHarianCard mainText="Tidur" subText="14-17" desk="jam"/>
-              <KebutuhanHarianCard mainText="Aktifitas" subText="> 30" desk="menit"/>
+              <DailyNeedCard mainText="Cairan" subText="500" desk="ml"/>
+              <DailyNeedCard mainText="Tidur" subText="14-17" desk="jam"/>
+              <DailyNeedCard mainText="Aktifitas" subText="> 30" desk="menit"/>
             </div>
             {/* end::Kebutuhan harian */}
           </div>
@@ -48,7 +48,7 @@ export default function Main() {
             <div className="flex flex-col gap-y-3">
               <SmallHeading text="Status Gizi"/>
 
-              <StatusGiziCard/>
+              <NutritionStatusCard/>
             </div>
 
             <div className="flex flex-col gap-y-3">

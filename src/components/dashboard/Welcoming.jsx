@@ -1,4 +1,4 @@
-export default function Welcomming() {
+export default function Welcoming() {
   return (
     <div className="relative w-full bg-[#F8D16D] h-auto sm:h-[210px] flex justify-center items-center p-[30px] rounded-[20px] overflow-hidden">
       <svg className="absolute top-0 left-0 z-10" xmlns="http://www.w3.org/2000/svg" width="414" height="240" viewBox="0 0 414 240" fill="none">

@@ -1,6 +1,6 @@
 import Sidebar from "../../layouts/Sidebar";
 import Heading from "../../components/dashboard/headings/Heading";
-import AddDataButton from "../../components/dashboard/buttons/AddDataButto";
+import AddDataButton from "../../components/dashboard/buttons/AddDataButton";
 import BabyNutritionRecordCard from "../../components/dashboard/cards/BabyNutritionRecordCard";
 import AddModal from "../../components/dashboard/modals/AddModal";
 import EditModal from "../../components/dashboard/modals/EditModal";

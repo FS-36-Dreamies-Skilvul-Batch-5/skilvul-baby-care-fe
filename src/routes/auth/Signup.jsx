@@ -77,9 +77,6 @@ export default function Signup() {
 
           <div className="w-full flex flex-col gap-y-[20px]">
             <div>
-              <label className="font-medium text-[#474F7C] text-sm md:text-base">
-                Akun
-              </label>
               <div className="flex flex-col gap-y-[10px]">
                 <div className="flex flex-col gap-y-2 gap-x-8">
                   <input

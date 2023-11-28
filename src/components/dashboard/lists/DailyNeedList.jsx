@@ -2,7 +2,12 @@ import DailyNeedCard from "../cards/DailyNeedCard";
 import { calculateBabyAgeInMonths } from "../../../utils/nutritionAlgorithm";
 
 export default function DailyNeedList() {
-  const babyAge = calculateBabyAgeInMonths(localStorage.getItem("baby_birth"));
+  const babyBirth = localStorage.getItem("baby_birth");
+  let babyAge = "";
+
+  if (babyBirth !== null) {
+    babyAge = calculateBabyAgeInMonths(babyBirth);
+  }
 
   const dailyNeeds = {
     bodyFluid: [700, 800, 1300, 1700],
@@ -47,23 +52,30 @@ export default function DailyNeedList() {
       return dailyNeeds.activityTime[5];
     }
   };
+
   return (
     <div className="flex flex-col min-[840px]:flex-row flex-between gap-x-[25px] gap-y-[20px]">
-      <DailyNeedCard
-        mainText="Cairan"
-        subText={getDailyBodyFluid()}
-        desk="ml"
-      />
-      <DailyNeedCard 
-        mainText="Tidur"
-        subText={getSleepTime()}
-        desk="jam"
-      />
-      <DailyNeedCard 
-        mainText="Aktifitas"
-        subText={getActivityTime()}
-        desk="menit"
-      />
+      {babyAge !== "" ? (
+        <>
+          <DailyNeedCard
+            mainText="Cairan"
+            subText={getDailyBodyFluid()}
+            desk="ml"
+          />
+          <DailyNeedCard mainText="Tidur" subText={getSleepTime()} desk="jam" />
+          <DailyNeedCard
+            mainText="Aktifitas"
+            subText={getActivityTime()}
+            desk="menit"
+          />
+        </>
+      ) : (
+        <>
+          <DailyNeedCard mainText="-" subText="-" desk="-" />
+          <DailyNeedCard mainText="-" subText="-" desk="-" />
+          <DailyNeedCard mainText="-" subText="-" desk="-" />
+        </>
+      )}
     </div>
   );
 }

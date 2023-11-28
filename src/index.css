@@ -51,3 +51,7 @@ html{
   -2.6px  2.6px 0 #C38305,
   -2.6px  0   0 #C38305;
 }
+
+.raw_ol_element div ol{
+  @apply list-disc list-outside pl-5 text-sm min-[840px]:text-base
+}

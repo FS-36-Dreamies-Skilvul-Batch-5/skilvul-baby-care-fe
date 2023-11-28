@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [loginFormData, setLoginFormData] = useState({
@@ -37,6 +38,7 @@ export default function Login() {
       console.log(data);
       // Store in LS
       localStorage.setItem('user_id', data.userId);
+      localStorage.setItem('token', data.token);
       // Redirect to landing
       window.location.replace("/");
     } catch (err) {
@@ -136,10 +138,10 @@ export default function Login() {
             </button>
             <div className="text-center mt-3">
               <span className="text-[#474F7C] text-sm md:text-base">
-                Belum punya akun?
-                <a href="signup.html" className="font-semibold">
+                Belum punya akun? {" "}
+                <Link to={"/signup"} className="font-semibold">
                   Klik disini
-                </a>
+                </Link>
               </span>
             </div>
           </div>

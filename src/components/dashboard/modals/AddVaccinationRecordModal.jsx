@@ -1,34 +1,37 @@
 import { useState } from "react";
 
-export default function EditModal({ nutrition_record, handleEditModal }) {
-  const [editNutritionRecordFormData, setEditNutritionRecordFormData] =
-    useState({
-      weight: nutrition_record.weight,
-      height: nutrition_record.height,
-      head_circumference: nutrition_record.head_circumference,
-      growth_date: nutrition_record.growth_date,
-    });
+export default function AddVaccinationRecordModal({ vaccine_info, handleAddModal }) {
+  const { id, name, grant_date_guide } = vaccine_info;
+
+  const [addVaccinationRecordFormData, setAddVaccinationRecordFormData] = useState({
+    baby_id: localStorage.getItem("baby_id"),
+    vaccine_id: id,
+    grant_date: "",
+    vaccine_brand: "",
+    vaccine_location: "",
+    vaccine_batch_number: ""
+  });
 
   const handleInputChange = (event) => {
-    setEditNutritionRecordFormData({
-      ...editNutritionRecordFormData,
+    setAddVaccinationRecordFormData({
+      ...addVaccinationRecordFormData,
       [event.target.name]: event.target.value,
     });
   };
 
-  const fetchEditNutritionRecord = async () => {
+  const fetchAddVaccinationRecord = async () => {
     const token = localStorage.getItem("token");
 
     try {
       const response = await fetch(
-        `http://localhost:3000/nutrition-records/${nutrition_record.id}`,
+        `http://localhost:3000/vaccination-records`,
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             "content-type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(editNutritionRecordFormData),
+          body: JSON.stringify(addVaccinationRecordFormData),
         }
       );
 
@@ -46,12 +49,11 @@ export default function EditModal({ nutrition_record, handleEditModal }) {
 
   const submit = (e) => {
     e.preventDefault();
-    fetchEditNutritionRecord();
+    fetchAddVaccinationRecord();
   };
-
   return (
     <>
-      <div className="fixed top-0 left-0 w-full h-screen bg-black/50 z-[99]">
+      <div className="fixed top-0 left-0 w-full h-screen bg-black/50 z-[9999]">
         <div className="flex w-full h-full justify-center items-center px-6">
           <form
             onSubmit={submit}
@@ -59,61 +61,60 @@ export default function EditModal({ nutrition_record, handleEditModal }) {
           >
             <div className="text-start min-[840px]:text-center">
               <h1 className="font-bold text-[22px] min-[840px]:text-[24px] text-[#272C49]">
-                Edit Data Form
+                {name}
               </h1>
               <p className="text-xs min-[840px]:text-sm text-[#898989]">
-                Edit data anak anda
+                Jadwal vaksin pada umur{" "}
+                <span className="font-semibold">{grant_date_guide}</span>
               </p>
             </div>
             <div className="flex flex-col gap-y-5">
               <input
                 type="date"
-                name="growth_date"
+                name="grant_date"
                 className="text-sm min-[840px]:text-base px-3 py-2 focus:outline-none border border-[#D1D9E2] text-[#474F7C] placeholder:text-[#898989] rounded-lg"
-                value={editNutritionRecordFormData.growth_date}
+                value={addVaccinationRecordFormData.grant_date}
                 onChange={handleInputChange}
                 required
               ></input>
               <input
                 type="text"
-                name="weight"
+                name="vaccine_brand"
                 className="text-sm min-[840px]:text-base px-3 py-2 focus:outline-none border border-[#D1D9E2] text-[#474F7C] placeholder:text-[#898989] rounded-lg"
-                pattern="^[0-9]*\.?[0-9]*$"
-                placeholder="Berat Badan cth:(2.55)"
-                value={editNutritionRecordFormData.weight}
+                placeholder="Merk Vaksin"
+                value={addVaccinationRecordFormData.vaccine_brand}
                 onChange={handleInputChange}
                 required
               ></input>
               <input
                 type="text"
-                name="height"
+                name="vaccine_location"
                 className="text-sm min-[840px]:text-base px-3 py-2 focus:outline-none border border-[#D1D9E2] text-[#474F7C] placeholder:text-[#898989] rounded-lg"
-                pattern="^[0-9]*\.?[0-9]*$"
-                placeholder="Tinggi Badan cth:(30)"
-                value={editNutritionRecordFormData.height}
+                placeholder="Lokasi Vaksin"
+                value={addVaccinationRecordFormData.vaccine_location}
                 onChange={handleInputChange}
                 required
               ></input>
               <input
                 type="text"
-                name="head_circumference"
+                name="vaccine_batch_number"
                 className="text-sm min-[840px]:text-base px-3 py-2 focus:outline-none border border-[#D1D9E2] text-[#474F7C] placeholder:text-[#898989] rounded-lg"
-                pattern="^[0-9]*\.?[0-9]*$"
-                placeholder="Lingkar Kepala cth:(30.212)"
-                value={editNutritionRecordFormData.head_circumference}
+                placeholder="Nomor Batch Vaksin"
+                value={addVaccinationRecordFormData.vaccine_batch_number}
                 onChange={handleInputChange}
                 required
               ></input>
+
             </div>
             <button
               type="submit"
               className="font-semibold w-full bg-[#1E3465] px-2 py-2.5 text-white rounded-lg text-sm min-[840px]:text-base"
             >
-              Edit
+              Buat Record
             </button>
 
             <button
-              onClick={handleEditModal}
+              onClick={handleAddModal}
               type="button"
               className="bg-[#1E3465] px-1.5 min-[840px]:px-2 py-1 absolute top-4 right-4 min-[840px]:right-6 cursor-pointer rounded-full"
             >

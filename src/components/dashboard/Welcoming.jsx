@@ -1,4 +1,30 @@
 export default function Welcoming() {
+  const babyName = localStorage.getItem('baby_name');
+
+  function getDate() {
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const monthNames = [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember",
+    ];
+    const month = monthNames[currentDate.getMonth()];
+    const year = currentDate.getFullYear();
+  
+    return `${day} ${month} ${year}`;
+  }
+  const today = getDate();
+
   return (
     <div className="relative w-full bg-[#F8D16D] h-auto sm:h-[210px] flex justify-center items-center p-[30px] rounded-[20px] overflow-hidden">
       <svg className="absolute top-0 left-0 z-10" xmlns="http://www.w3.org/2000/svg" width="414" height="240" viewBox="0 0 414 240" fill="none">
@@ -14,17 +40,25 @@ export default function Welcoming() {
         <div className="flex-1 flex flex-col justify-between gap-y-[16px]">
           <div>
             <h1 className="font-extrabold text-[36px] text-[#F8D16D] welcome__text lh__0">Welcome Back!</h1>
-            <p className="text-white">
-              Hello
-              <span id="baby_name" className="font-bold"></span>
-              Parent 👋
-            </p>
+            { babyName !== undefined ? (
+              <p className="text-white">
+                Hello
+                <span className="font-bold mx-1">
+                  {babyName}&apos;s
+                </span>
+                Parent 👋
+              </p>
+            ) : (
+              <p className="text-white">-</p>
+            )}
           </div>
           <div className="flex items-center gap-x-2">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="17" viewBox="0 0 14 17" fill="none">
               <path d="M3 1.5V2.5H1.5C0.671875 2.5 0 3.17187 0 4V5.5H14V4C14 3.17187 13.3281 2.5 12.5 2.5H11V1.5C11 0.946875 10.5531 0.5 10 0.5C9.44688 0.5 9 0.946875 9 1.5V2.5H5V1.5C5 0.946875 4.55313 0.5 4 0.5C3.44688 0.5 3 0.946875 3 1.5ZM14 6.5H0V15C0 15.8281 0.671875 16.5 1.5 16.5H12.5C13.3281 16.5 14 15.8281 14 15V6.5Z" fill="white"/>
             </svg>
-            <p id="date_el" className="text-white text-sm mt-0.5"></p>
+            <p className="text-white text-sm mt-0.5">
+              {today}
+            </p>
           </div>
         </div>
         <div className="flex-1 flex justify-center items-center">

@@ -3,6 +3,14 @@ import Heading from "../../components/dashboard/headings/Heading"
 import NutritionParameterCard from "../../components/dashboard/cards/NutritionParameterCard"
 
 export default function BabyChart() {
+  const userId = localStorage.getItem('user_id');
+  const token = localStorage.getItem('token');
+
+  if(userId == undefined && token == undefined){
+    window.location.replace("/");
+  } else {
+    console.log("User is logged in");
+  }
   return (
     <>
       <Sidebar/>

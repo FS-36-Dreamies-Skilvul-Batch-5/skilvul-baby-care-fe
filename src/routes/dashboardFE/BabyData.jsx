@@ -105,7 +105,7 @@ export default function BabyData() {
           <div className="w-full flex flex-col text-start mb-2">
             <Heading
               text="Data Anak"
-              desk={`Terakhir diupdate ${
+              desk={`terakhir diupdate ${
                 babyNutritionRecords && babyNutritionRecords.length !== 0
                   ? convertHumanReadDateFormat(
                       babyNutritionRecords[babyNutritionRecords.length - 1]

@@ -13,7 +13,7 @@ import AdminSidebar from "../../layouts/AdminSidebar";
 import AdminWelcoming from "../../components/dashboard/admin/AdminWelcoming";
 import MonitoringList from "../../components/dashboard/admin/lists/MonitoringList";
 
-export default function Main() {
+export default function Main() {  
   const [isLoading, setIsLoading] = useState(true);
   const [userRole, setUserRole] = useState("");
   const [isUserHaveBaby, setIsUserHaveBaby] = useState(true);
@@ -117,7 +117,6 @@ export default function Main() {
     if (userRole == "user") {
       fetchUserBaby();
     } else if (userRole == "admin") {
-      console.log("Admin");
       setIsLoading(false);
     }
   }, [userRole]);

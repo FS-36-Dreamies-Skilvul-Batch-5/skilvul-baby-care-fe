@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import Sidebar from "../../layouts/Sidebar";
 import Heading from "../../components/dashboard/headings/Heading";
 import ImmunizationList from "../../components/dashboard/lists/ImmunizationList";
+import { checkUserRole } from "../../utils/auth/checkUserRole";
 
 export default function Immunization() {
+  checkUserRole('user');
+
   const [immunizationList, setImmunizationList] = useState([]);
   const [vaccinationRecords, setVaccinationRecords] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -66,15 +69,6 @@ export default function Immunization() {
       return matchesName && item.status === "Belum";
     }
   });
-
-  const userId = localStorage.getItem("user_id");
-  const token = localStorage.getItem("token");
-
-  if (userId == undefined && token == undefined) {
-    window.location.replace("/");
-  } else {
-    console.log("User is logged in");
-  }
 
   useEffect(() => {
     fetchData();

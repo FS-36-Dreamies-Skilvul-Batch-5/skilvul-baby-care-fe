@@ -3,7 +3,7 @@ import UserCard from "../cards/UserCard";
 export default function UserList({users}) {
   return (
     <div className="w-full border border-[#D1D9E2] rounded-xl overflow-x-scroll scrollbar__hidden">
-      <table className="w-full min-w-[1024px] table-fixed border-collapse select-none">
+      <table className="w-full min-w-[1024px] table-auto border-collapse select-none">
         <thead>
           <tr className="border-b border-[#D1D9E2]">
             <th className="text-[#272C49] text-center py-2 w-16">No</th>

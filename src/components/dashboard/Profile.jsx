@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function Profile(){
-  const [userFullName, setUserFullName] = useState('');
+  const [userData, setUserData] = useState('');
   const userId = localStorage.getItem('user_id');
   const token = localStorage.getItem('token');
 
@@ -23,7 +23,7 @@ export default function Profile(){
       }
 
       const data = await response.json();
-      setUserFullName(data.data.name);
+      setUserData(data.data);
     } catch (err) {
       console.log(err);
     }
@@ -34,16 +34,15 @@ export default function Profile(){
   }, [])
   return(
     <div className="flex items-center gap-x-3">
-      <img src="../assets/images/users/brenda-s.png" alt="User's Profile Picture" className="w-[50px] h-[50px] shrink-0 rounded-full"></img>
+      <img src={userData.img_url == "" || userData.img_url == null ? "../assets/images/users/user-default.png" : `https://babycare.com/${userData.img_url}`}
+        alt="User's Profile Picture"
+        className="w-[50px] h-[50px] shrink-0 border-2 border-[#272C49] rounded-full"
+      ></img>
       <div>
         <h1 id="user_full_name" className="font-semibold text-[#272C49] text-lg">
-          {userFullName}
+          {userData.name}
         </h1>
-        {/* <div className="flex gap-x-1 -mt-[1px]">
-          <span className="text-xs text-[#898989]">bergabung</span>
-          <span className="text-xs text-[#898989]">-</span>
-          <span className="text-xs text-[#898989]">yang lalu</span>
-        </div> */}
+        <div className="text-xs text-[#898989] -mt-0.5">{userData.username}</div>
       </div>
     </div>
   )

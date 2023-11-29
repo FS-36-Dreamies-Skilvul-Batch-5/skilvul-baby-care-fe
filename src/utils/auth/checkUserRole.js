@@ -1,6 +1,5 @@
 const userId = localStorage.getItem("user_id");
 const token = localStorage.getItem("token");
-const userRole = localStorage.getItem("role");
 
 export const checkUserRole = (role) => {
   if (userId == null && token == null) {
@@ -24,6 +23,8 @@ const logMessage = (message) => {
 }
 
 const handleAdminRole = () => {
+  const userRole = localStorage.getItem("role");
+
   if (userRole == "admin") {
     logMessage("Authorized: " + userRole);
   } else {
@@ -33,6 +34,8 @@ const handleAdminRole = () => {
 }
 
 const handleUserRole = () => {
+  const userRole = localStorage.getItem("role");
+  
   if (userRole == "admin") {
     logMessage("Unauthorized: " + userRole);
     redirectTo("/dashboard");

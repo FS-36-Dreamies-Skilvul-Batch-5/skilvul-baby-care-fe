@@ -1,5 +1,5 @@
-export default function Welcoming() {
-  const babyName = localStorage.getItem('baby_name');
+export default function AdminWelcoming() {
+  const userRole = localStorage.getItem('role');
 
   function getDate() {
     const currentDate = new Date();
@@ -40,16 +40,10 @@ export default function Welcoming() {
         <div className="flex-1 flex flex-col justify-between gap-y-[16px]">
           <div>
             <h1 className="font-extrabold text-[36px] text-[#F8D16D] welcome__text lh__0">Welcome Back!</h1>
-            {babyName !== null ? (
+            {userRole !== null && (
               <p className="text-white">
-                Hello
-                <span className="font-bold mx-1">
-                  {babyName}&apos;s
-                </span>
-                Parent 👋
+                Hello There 👋
               </p>
-            ) : (
-              <p className="text-white">-</p>
             )}
           </div>
           <div className="flex items-center gap-x-2">

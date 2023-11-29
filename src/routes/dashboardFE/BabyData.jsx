@@ -9,8 +9,11 @@ import {
   calculateBabyAgeInMonths,
 } from "../../utils/nutritionAlgorithm";
 import { convertHumanReadDateFormat } from "../../utils/convertHumanReadDateFormat";
+import { checkUserRole } from "../../utils/auth/checkUserRole";
 
 export default function BabyData() {
+  checkUserRole('user');
+
   const [selectedFilter, setSelectedFilter] = useState("Semua");
   const [babyNutritionRecords, setBabyNutritionRecords] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -24,17 +27,9 @@ export default function BabyData() {
     setSelectedFilter(e.target.value);
   };
 
-  const userId = localStorage.getItem("user_id");
-  const token = localStorage.getItem("token");
-
-  if (userId == undefined && token == undefined) {
-    window.location.replace("/");
-  } else {
-    console.log("User is logged in");
-  }
-
   const fetchBabyNutritionRecord = async () => {
     const babyId = localStorage.getItem("baby_id");
+    const token = localStorage.getItem("token");
 
     try {
       const response = await fetch(

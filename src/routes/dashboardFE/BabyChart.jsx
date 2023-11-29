@@ -32,14 +32,16 @@ ChartJS.register(
   Filler
 );
 import { Line } from "react-chartjs-2";
+import { checkUserRole } from "../../utils/auth/checkUserRole";
 
 export default function BabyChart() {
+  checkUserRole('user');
+
   const [isLoading, setIsLoading] = useState(true);
   const [babyNutritionRecords, setBabyNutritionRecords] = useState([]);
   const [selectedChart, setSelectedChart] = useState("Berat Badan");
   const [ageRange, setAgeRange] = useState("0-6");
 
-  const userId = localStorage.getItem("user_id");
   const token = localStorage.getItem("token");
   const babyId = localStorage.getItem("baby_id");
   const babyName = localStorage.getItem("baby_name");
@@ -73,12 +75,6 @@ export default function BabyChart() {
       console.log(err);
     }
   };
-
-  if (userId == undefined && token == undefined) {
-    window.location.replace("/");
-  } else {
-    console.log("User is logged in");
-  }
 
   const convertedAgeRange = () => {
     const ranges = {

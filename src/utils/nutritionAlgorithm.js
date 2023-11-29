@@ -1,11 +1,7 @@
 export function getNutritionStatus(props) {
-  const {
-    weight,
-    height,
-    babyAge,
-    babyGender,
-  } = props;
+  const { weight, height, babyAge, babyGender } = props;
 
+  // 0 - 36 month
   const bbuTbuLkStandartReference = {
     female: [
       {
@@ -1550,7 +1546,7 @@ export function getNutritionStatus(props) {
         ageInMonth: 27,
         bbu: {
           min3: 9.0,
-          min2: 910.1,
+          min2: 10.1,
           min: 11.3,
           median: 12.7,
           plus: 14.3,
@@ -1611,7 +1607,7 @@ export function getNutritionStatus(props) {
           min: 87.8,
           median: 91.2,
           plus: 94.5,
-          plus2: 87.9,
+          plus2: 97.9,
           plus3: 101.2,
         },
         headCircumference: {
@@ -1645,22 +1641,22 @@ export function getNutritionStatus(props) {
       {
         ageInMonth: 31,
         bbu: {
+          min3: 9.5,
+          min2: 10.7,
+          min: 12,
+          median: 13.5,
+          plus: 15.2,
+          plus2: 17.1,
+          plus3: 19.3,
+        },
+        tbu: {
           min3: 82.3,
           min2: 85.7,
           min: 89.2,
           median: 92.7,
           plus: 96.1,
           plus2: 99.6,
-          plus3: 103.0,
-        },
-        tbu: {
-          min3: 2.9,
-          min2: 3.4,
-          min: 84.8,
-          median: 87.8,
-          plus: 90.9,
-          plus2: 4.4,
-          plus3: 5.0,
+          plus3: 103,
         },
         headCircumference: {
           median: 56,
@@ -1790,12 +1786,13 @@ export function getNutritionStatus(props) {
   };
 
   const nutritionStandartReference = {
-    female: [{
+    female: [
+      {
         height: 45.0,
         bbu_tbu: {
           min: 2.3,
           median: 2.5,
-          plus: 2.7
+          plus: 2.7,
         },
       },
       {
@@ -1803,7 +1800,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 2.6,
           median: 2.8,
-          plus: 3.1
+          plus: 3.1,
         },
       },
       {
@@ -1811,7 +1808,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 2.9,
           median: 3.2,
-          plus: 3.5
+          plus: 3.5,
         },
       },
       {
@@ -1819,7 +1816,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 3.3,
           median: 3.6,
-          plus: 3.9
+          plus: 3.9,
         },
       },
       {
@@ -1827,7 +1824,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 3.7,
           median: 4.0,
-          plus: 4.4
+          plus: 4.4,
         },
       },
       {
@@ -1835,7 +1832,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 4.2,
           median: 4.5,
-          plus: 5.0
+          plus: 5.0,
         },
       },
       {
@@ -1843,7 +1840,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 4.6,
           median: 5.1,
-          plus: 5.6
+          plus: 5.6,
         },
       },
       {
@@ -1851,7 +1848,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 5.1,
           median: 5.6,
-          plus: 6.2
+          plus: 6.2,
         },
       },
       {
@@ -1859,7 +1856,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 5.6,
           median: 6.1,
-          plus: 6.7
+          plus: 6.7,
         },
       },
       {
@@ -1867,7 +1864,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 6.0,
           median: 6.6,
-          plus: 7.3
+          plus: 7.3,
         },
       },
       {
@@ -1875,7 +1872,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 6.5,
           median: 7.1,
-          plus: 7.8
+          plus: 7.8,
         },
       },
       {
@@ -1883,7 +1880,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 6.9,
           median: 7.5,
-          plus: 8.3
+          plus: 8.3,
         },
       },
       {
@@ -1891,7 +1888,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 7.3,
           median: 8.0,
-          plus: 8.7
+          plus: 8.7,
         },
       },
       {
@@ -1899,7 +1896,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 7.7,
           median: 8.4,
-          plus: 9.2
+          plus: 9.2,
         },
       },
       {
@@ -1907,7 +1904,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 8.0,
           median: 8.8,
-          plus: 9.6
+          plus: 9.6,
         },
       },
       {
@@ -1915,7 +1912,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 8.4,
           median: 9.1,
-          plus: 10.0
+          plus: 10.0,
         },
       },
       {
@@ -1923,7 +1920,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 8.7,
           median: 9.5,
-          plus: 10.4
+          plus: 10.4,
         },
       },
       {
@@ -1931,16 +1928,17 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 9.1,
           median: 9.9,
-          plus: 10.8
+          plus: 10.8,
         },
       },
     ],
-    male: [{
+    male: [
+      {
         height: 45.0,
         bbu_tbu: {
           min: 2.2,
           median: 2.4,
-          plus: 2.7
+          plus: 2.7,
         },
       },
       {
@@ -1948,7 +1946,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 2.5,
           median: 2.8,
-          plus: 3.0
+          plus: 3.0,
         },
       },
       {
@@ -1956,7 +1954,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 2.9,
           median: 3.1,
-          plus: 3.4
+          plus: 3.4,
         },
       },
       {
@@ -1964,7 +1962,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 3.3,
           median: 3.6,
-          plus: 3.9
+          plus: 3.9,
         },
       },
       {
@@ -1972,7 +1970,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 3.7,
           median: 4.0,
-          plus: 4.4
+          plus: 4.4,
         },
       },
       {
@@ -1980,7 +1978,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 4.2,
           median: 4.5,
-          plus: 5.0
+          plus: 5.0,
         },
       },
       {
@@ -1988,7 +1986,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 4.7,
           median: 5.1,
-          plus: 5.6
+          plus: 5.6,
         },
       },
       {
@@ -1996,7 +1994,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 5.3,
           median: 5.7,
-          plus: 6.2
+          plus: 6.2,
         },
       },
       {
@@ -2004,7 +2002,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 5.8,
           median: 6.3,
-          plus: 6.8
+          plus: 6.8,
         },
       },
       {
@@ -2012,7 +2010,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 6.2,
           median: 6.8,
-          plus: 7.4
+          plus: 7.4,
         },
       },
       {
@@ -2020,7 +2018,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 6.7,
           median: 7.3,
-          plus: 7.9
+          plus: 7.9,
         },
       },
       {
@@ -2028,7 +2026,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 7.1,
           median: 7.7,
-          plus: 8.4
+          plus: 8.4,
         },
       },
       {
@@ -2036,7 +2034,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 7.6,
           median: 8.2,
-          plus: 8.9
+          plus: 8.9,
         },
       },
       {
@@ -2044,7 +2042,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 8.0,
           median: 8.6,
-          plus: 9.4
+          plus: 9.4,
         },
       },
       {
@@ -2052,7 +2050,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 8.4,
           median: 9.1,
-          plus: 9.9
+          plus: 9.9,
         },
       },
       {
@@ -2060,7 +2058,7 @@ export function getNutritionStatus(props) {
         bbu_tbu: {
           min: 8.8,
           median: 9.5,
-          plus: 10.3
+          plus: 10.3,
         },
       },
     ],

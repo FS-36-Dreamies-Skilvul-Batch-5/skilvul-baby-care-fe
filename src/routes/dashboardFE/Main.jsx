@@ -10,7 +10,8 @@ import DailyNeedList from "../../components/dashboard/lists/DailyNeedList";
 import ImmunizationReminderList from "../../components/dashboard/lists/ImmunizationReminderList";
 import DashboardLoading from "../../components/dashboard/loadings/DashboardLoading";
 import AdminSidebar from "../../layouts/AdminSidebar";
-import AdminWelcoming from "../../components/dashboard/AdminWelcoming";
+import AdminWelcoming from "../../components/dashboard/admin/AdminWelcoming";
+import MonitoringList from "../../components/dashboard/admin/lists/MonitoringList";
 
 export default function Main() {
   const [isLoading, setIsLoading] = useState(true);
@@ -117,7 +118,7 @@ export default function Main() {
       fetchUserBaby();
     } else if (userRole == "admin") {
       console.log("Admin");
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }, [userRole]);
 
@@ -176,30 +177,46 @@ export default function Main() {
           </>
         ) : (
           <>
-            <AdminSidebar/>
+            <AdminSidebar />
 
             <div className="min-[840px]:pl-[78px] pt-12 min-[840px]:pt-0 pb-12 xl:pb-0">
               <div className="flex flex-col xl:flex-row justify-between w-full h-auto xl:h-screen px-[20px] sm:px-[35px] min-[840px]:pl-[55px] min-[840px]:pr-[55px] xl:pr-0 gap-x-[55px] select-none">
                 <div className="py-10 flex flex-col w-full gap-y-[30px] xl:gap-y-[20px] min-[1600px]:gap-y-[30px]">
-                  <AdminWelcoming/>
+                  <AdminWelcoming />
 
                   <div className="flex flex-col gap-y-3">
                     <SmallHeading
                       text="Dashboard"
                       desk="kesimpulan dari semua data yang ada"
                     />
+
+                    <MonitoringList />
                   </div>
                 </div>
 
                 <div className="p-6 sm:p-8 min-[840px]:p-10 flex flex-col w-full xl:max-w-[435px] bg-white shadow-[0_4px_8px_0px_rgba(0,0,0,0.10)] gap-y-10 xl:gap-y-[14px] min-[1600px]:gap-y-[30px] rounded-2xl xl:rounded-none">
                   <Profile />
+
+                  <div className="relative w-full h-[400px] xl:h-full rounded-2xl overflow-hidden">
+                    <img
+                      src="/assets/images/admin-decoration.jpg"
+                      alt="Decorations"
+                      className="w-full h-full rounded-xl object-cover"
+                    />
+                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#272C49]/80 to-[#F8D16D]/40 backdrop-blur-[1px]"></div>
+                    <img
+                      src="/assets/icons/hello.png"
+                      alt="Decorations"
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] aspect-[256/256] animate-pulse"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </>
         ))}
 
-      <DashboardLoading loadState={isLoading}/>
+      <DashboardLoading loadState={isLoading} />
     </>
   );
 }

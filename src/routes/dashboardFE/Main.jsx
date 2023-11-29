@@ -194,10 +194,10 @@ export default function Main() {
                   </div>
                 </div>
 
-                <div className="p-6 sm:p-8 min-[840px]:p-10 flex flex-col w-full xl:max-w-[435px] bg-white shadow-[0_4px_8px_0px_rgba(0,0,0,0.10)] gap-y-10 xl:gap-y-[14px] min-[1600px]:gap-y-[30px] rounded-2xl xl:rounded-none">
+                <div className="p-6 sm:p-8 min-[840px]:p-10 flex flex-col w-full xl:max-w-[435px] bg-white shadow-[0_4px_8px_0px_rgba(0,0,0,0.10)] gap-y-10 xl:gap-y-[18px] min-[1600px]:gap-y-[30px] rounded-2xl xl:rounded-none">
                   <Profile />
 
-                  <div className="relative w-full h-[400px] xl:h-full rounded-2xl overflow-hidden">
+                  <div className="relative w-full h-[300px] xl:h-[220px] rounded-2xl overflow-hidden">
                     <img
                       src="/assets/images/admin-decoration.jpg"
                       alt="Decorations"

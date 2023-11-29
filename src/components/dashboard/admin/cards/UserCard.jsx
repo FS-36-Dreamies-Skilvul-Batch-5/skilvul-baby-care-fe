@@ -35,7 +35,7 @@ export default function UserCard(props) {
             {role}
           </span>
         </td>
-        <td className="text-[#898989] text-center py-3.5">
+        <td className="text-[#898989] text-center py-3.5 px-5">
           <span className="w-full flex justify-center gap-x-2">
             {role == "admin" && (
               <>

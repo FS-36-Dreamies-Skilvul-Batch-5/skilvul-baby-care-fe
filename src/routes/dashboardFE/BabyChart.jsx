@@ -4,6 +4,10 @@ import Heading from "../../components/dashboard/headings/Heading";
 import SelectableNutritionParameterCard from "../../components/dashboard/cards/SelectableNutritionParameterCard";
 import DashboardLoading from "../../components/dashboard/loadings/DashboardLoading";
 import { convertHumanReadDateFormat } from "../../utils/convertHumanReadDateFormat";
+import {
+  standartMaleReference,
+  standartFemaleReference,
+} from "../../utils/standartParameterValue";
 
 import {
   Chart as ChartJS,
@@ -14,8 +18,8 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js'
-import { Chart } from 'react-chartjs-2'
+  Filler
+} from "chart.js";
 
 ChartJS.register(
   CategoryScale,
@@ -24,8 +28,9 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
-)
+  Legend,
+  Filler
+);
 import { Line } from "react-chartjs-2";
 
 export default function BabyChart() {
@@ -37,6 +42,8 @@ export default function BabyChart() {
   const userId = localStorage.getItem("user_id");
   const token = localStorage.getItem("token");
   const babyId = localStorage.getItem("baby_id");
+  const babyName = localStorage.getItem("baby_name");
+  const babyGender = localStorage.getItem("gender");
 
   const handleChange = (value) => {
     setSelectedChart(value);
@@ -82,7 +89,7 @@ export default function BabyChart() {
       "0-36": 37,
     };
     const selectedRange = ranges[ageRange];
-  
+
     if (selectedRange !== undefined) {
       return Array.from({ length: selectedRange }, (_, index) => index);
     } else {
@@ -92,36 +99,57 @@ export default function BabyChart() {
   };
 
   const chartDataBasedOnState = () => {
-    if(selectedChart == "Berat Badan"){
-      return babyNutritionRecords.map(item => item.weight);
-    } else if(selectedChart == "Tinggi Badan"){
-      return babyNutritionRecords.map(item => item.height);
+    if (selectedChart == "Berat Badan") {
+      return babyNutritionRecords.map((item) => item.weight);
+    } else if (selectedChart == "Tinggi Badan") {
+      return babyNutritionRecords.map((item) => item.height);
     } else {
-      return babyNutritionRecords.map(item => item.head_circumference);
+      return babyNutritionRecords.map((item) => item.head_circumference);
     }
-  }
+  };
+
+  const standartChartDataBasedOnState = () => {
+    if (selectedChart == "Berat Badan") {
+      return babyGender == "male" ? standartMaleReference.weight.map(data => data.median): standartFemaleReference.weight.map(data => data.median);
+    } else if (selectedChart == "Tinggi Badan") {
+      return babyGender == "male" ? standartMaleReference.height.map(data => data.median) : standartFemaleReference.height.map(data => data.median);
+    } else {
+      return babyGender == "male" ? standartMaleReference.headCircumference.map(data => data.median) : standartFemaleReference.headCircumference.map(data => data.median);
+    }
+  };
+  const getReferenceChartDataBasedOnState = (value) => {
+    if (selectedChart == "Berat Badan") {
+      return babyGender == "male" ? standartMaleReference.weight.map(data => data[value]): standartFemaleReference.weight.map(data => data[value]);
+    } else if (selectedChart == "Tinggi Badan") {
+      return babyGender == "male" ? standartMaleReference.height.map(data => data[value]) : standartFemaleReference.height.map(data => data[value]);
+    } else {
+      return babyGender == "male" ? standartMaleReference.headCircumference.map(data => data.median) : standartFemaleReference.headCircumference.map(data => data.median);
+    }
+  };
 
   const getSuggestedMin = () => {
-    if(selectedChart == "Berat Badan"){
+    if (selectedChart == "Berat Badan") {
       return 2;
-    } else if(selectedChart == "Tinggi Badan"){
+    } else if (selectedChart == "Tinggi Badan") {
       return 40;
     } else {
       return 25;
     }
-  }
+  };
 
   const getSuggestedMax = () => {
     if (selectedChart === "Berat Badan") {
-      return Math.max(...babyNutritionRecords.map(item => item.weight)) + 4;
+      return Math.max(...babyNutritionRecords.map((item) => item.weight)) + 4;
     } else if (selectedChart === "Tinggi Badan") {
-      return Math.max(...babyNutritionRecords.map(item => item.height)) + 20;
+      return Math.max(...babyNutritionRecords.map((item) => item.height)) + 20;
     } else {
-      return Math.max(...babyNutritionRecords.map(item => item.head_circumference)) + 10;
+      return (
+        Math.max(
+          ...babyNutritionRecords.map((item) => item.head_circumference)
+        ) + 10
+      );
     }
-  }
-  
-  console.log(getSuggestedMax())
+  };
 
   useEffect(() => {
     fetchBabyNutritionRecord();
@@ -158,7 +186,7 @@ export default function BabyChart() {
                 <div className="flex flex-col ">
                   <div className="grid md:grid-cols-3 gap-y-3">
                     <div className="md:col-span-2 flex items-center w-full overflow-hidden">
-                      <div className="flex flex-col overflow-hidden gap-x-2">
+                      <div className="flex flex-col overflow-hidden gap-x-2 select-none">
                         <h1 className="font-opensans text-base lg:text-lg text-[#272C49] font-extrabold">
                           {selectedChart == "Berat Badan" &&
                             "Berat Badan Sesuai Usia"}
@@ -172,7 +200,7 @@ export default function BabyChart() {
                   </div>
 
                   <div className="w-full">
-                    <div className="grid md:grid-cols-3">
+                    <div className="grid md:grid-cols-3 mb-4 select-none">
                       <div className="md:col-span-2 flex items-center w-full overflow-hidden">
                         <span className="text-sm">
                           {selectedChart == "Berat Badan" && "Berat (kg)"}
@@ -182,11 +210,11 @@ export default function BabyChart() {
                         </span>
                       </div>
 
-                      <div className="relative w-full">
+                      <div className="relative w-full mt-4 md:mt-0">
                         <select
                           value={ageRange}
                           onChange={(e) => setAgeRange(e.target.value)}
-                          className="w-full rounded-lg text-sm text-gray-400 px-2.5 py-3 border-[0.5px] border-gray-200 shadow-[0_2px_4px_0_rgba(0,0,0,0.10)] focus:outline-none appearance-none"
+                          className="w-full rounded-lg text-sm text-gray-400 px-2.5 py-3 border-[0.5px] border-gray-200 shadow-[0_1px_2px_0_rgba(0,0,0,0.10)] md:shadow-[0_2px_4px_0_rgba(0,0,0,0.10)] focus:outline-none appearance-none"
                         >
                           <option value="0-2" className="text-sm">
                             Grafik 0-2 bulan
@@ -216,61 +244,122 @@ export default function BabyChart() {
                       </div>
                     </div>
 
-                    <Line
-                      datasetIdKey="Baby Chart"
-                      data={{
-                        labels: convertedAgeRange(),
-                        datasets: [
-                          {
-                            id: 1,
-                            label: selectedChart,
-                            data: chartDataBasedOnState(),
-                            borderColor: '#56B0F8',
-                            backgroundColor: '#30628A',
-                            tension: 0.1,
-                            borderWidth: 3.5,
-                            pointRadius: 4,
-                            pointBorderWidth: 1,
-                            pointHitRadius: 3 
-                          },
-                          // {
-                          //   id: 3,
-                          //   label: 'Max Value',
-                          //   data: maxValue,
-                          //   borderColor: '#FF0000',
-                          //   backgroundColor: '#7E0000',
-                          //   borderWidth: 1,
-                          //   tension: 0.1,
-                          // },
-                          // {
-                          //   id: 4,
-                          //   label: 'Min Value',
-                          //   data: minValue,
-                          //   borderColor: '#FF0000',
-                          //   backgroundColor: '#7E0000',
-                          //   borderWidth: 1,
-                          //   tension: 0.1,
-                          // },
-                        ],
-                      }}
-                      options={{
-                        responsive: true,
-                        scales: {
-                          y: {
-                            beginAtZero: false,
-                            suggestedMin: getSuggestedMin(),
-                            suggestedMax: getSuggestedMax()
-                          },
-                        },
-                        plugins: {
-                          legend: {
-                            position: 'top',
-                          }
-                        },
-                      }}
-                    />
+                    <div className="w-full flex justify-center items-center gap-x-2 my-2 select-none">
+                      <div className="flex justify-center items-center bg-[#56B0F8] w-9 h-1 rounded-lg">
+                        <span className="w-2.5 h-2.5 bg-[#30628A] border-[1.5px] border-[#56B0F8] rounded-full">
+                        </span>
+                      </div>
+                      <span className="text-xs">Pertumbuhan {babyName ? babyName : "si kecil"}</span>
+                    </div>
 
-                    <p className="flex justify-end text-xs">Usia (bulan)</p>
+                    <div className="w-full overflow-x-scroll scrollbar__hidden">
+                      <div className="w-[800px] md:w-full h-[400px] md:h-[1000px]">
+                        <Line
+                          datasetIdKey="Baby Chart"
+                          data={{
+                            labels: convertedAgeRange(),
+                            datasets: [
+                              {
+                                id: 1,
+                                label: selectedChart,
+                                data: chartDataBasedOnState(),
+                                borderColor: "#56B0F8",
+                                backgroundColor: "#30628A",
+                                tension: 0.05,
+                                borderWidth: 3.5,
+                                pointRadius: 4,
+                                pointBorderWidth: 1,
+                                pointHitRadius: 8,
+                              },
+                              {
+                                id: 2,
+                                label: `Standart ${selectedChart}`,
+                                data: standartChartDataBasedOnState(),
+                                borderColor: selectedChart !== 'Lingkar Kepala' ? "#74C389" : "#CCCCCC",
+                                borderWidth: 2,
+                                tension: 0.05,
+                                borderDash: [10, 8],
+                                pointBorderWidth: 0,
+                                pointBorderColor: 'rgba(255,255,255, 0)',
+                                pointBackgroundColor: 'rgba(255,255,255, 0)',
+                                pointHitRadius: 0
+                              },
+                              {
+                                id: 3,
+                                label: 'Max Green Area',
+                                data: selectedChart !== 'Lingkar Kepala' ? getReferenceChartDataBasedOnState("plus2") : [],
+                                backgroundColor: "#B4E5A3",
+                                borderColor: "#DFCC6D",
+                                borderWidth: 2,
+                                tension: 0.05,
+                                pointBorderWidth: 0,
+                                pointBorderColor: 'rgba(255,255,255, 0)',
+                                pointBackgroundColor: 'rgba(255,255,255, 0)',
+                                pointHitRadius: 0,
+                                fill: "+1"
+                              },
+                              {
+                                id: 4,
+                                label: 'Min Green Area',
+                                data: selectedChart !== 'Lingkar Kepala' ? getReferenceChartDataBasedOnState("min2") : [],
+                                borderColor: "#DFCC6D",
+                                borderWidth: 4,
+                                tension: 0.05,
+                                pointBorderWidth: 0,
+                                pointBorderColor: 'rgba(255,255,255, 0)',
+                                pointBackgroundColor: 'rgba(255,255,255, 0)',
+                                pointHitRadius: 0,
+                              },
+                              {
+                                id: 5,
+                                label: 'Max Yellow Area with Red Border',
+                                data: selectedChart !== 'Lingkar Kepala' ? getReferenceChartDataBasedOnState("plus3") : [],
+                                backgroundColor: "#FEE8AE",
+                                borderColor: "#F7B3A9",
+                                borderWidth: 2,
+                                tension: 0.05,
+                                pointBorderWidth: 0,
+                                pointBorderColor: 'rgba(255,255,255, 0)',
+                                pointBackgroundColor: 'rgba(255,255,255, 0)',
+                                pointHitRadius: 0,
+                                fill: "+1"
+                              },
+                              {
+                                id: 6,
+                                label: 'Min Yellow Area with Red Border',
+                                data: selectedChart !== 'Lingkar Kepala' ? getReferenceChartDataBasedOnState("min3") : [],
+                                borderColor: "#F7B3A9",
+                                borderWidth: 4,
+                                tension: 0.05,
+                                pointBorderWidth: 0,
+                                pointBorderColor: 'rgba(255,255,255, 0)',
+                                pointBackgroundColor: 'rgba(255,255,255, 0)',
+                                pointHitRadius: 0,
+                              },
+                            ],
+                          }}
+                          options={{
+                            responsive: true,
+                            scales: {
+                              y: {
+                                beginAtZero: false,
+                                suggestedMin: getSuggestedMin(),
+                                suggestedMax: getSuggestedMax(),
+                              },
+                            },
+                            plugins: {
+                              legend: {
+                                position: "top",
+                                labels: false
+                              },
+                            },
+                            maintainAspectRatio: false,
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    <p className="flex justify-end text-xs mt-2">Usia (bulan)</p>
                   </div>
                 </div>
               </div>

@@ -1543,7 +1543,7 @@ const bbuTbuLkStandartReference = {
       ageInMonth: 27,
       bbu: {
         min3: 9.0,
-        min2: 910.1,
+        min2: 10.1,
         min: 11.3,
         median: 12.7,
         plus: 14.3,
@@ -1604,7 +1604,7 @@ const bbuTbuLkStandartReference = {
         min: 87.8,
         median: 91.2,
         plus: 94.5,
-        plus2: 87.9,
+        plus2: 97.9,
         plus3: 101.2,
       },
       headCircumference: {
@@ -1638,22 +1638,22 @@ const bbuTbuLkStandartReference = {
     {
       ageInMonth: 31,
       bbu: {
+        min3: 9.5,
+        min2: 10.7,
+        min: 12,
+        median: 13.5,
+        plus: 15.2,
+        plus2: 17.1,
+        plus3: 19.3,
+      },
+      tbu: {
         min3: 82.3,
         min2: 85.7,
         min: 89.2,
         median: 92.7,
         plus: 96.1,
         plus2: 99.6,
-        plus3: 103.0,
-      },
-      tbu: {
-        min3: 2.9,
-        min2: 3.4,
-        min: 84.8,
-        median: 87.8,
-        plus: 90.9,
-        plus2: 4.4,
-        plus3: 5.0,
+        plus3: 103,
       },
       headCircumference: {
         median: 56,

@@ -14,8 +14,8 @@ export default function ArticleCategoryList({categories}) {
 
         <tbody>
           {categories.length !== 0 ? (
-            categories.map((category) => (
-              <ArticleCategoryCard {...category} key={category.id}/>
+            categories.map((category, index) => (
+              <ArticleCategoryCard {...category} key={category.id} category_number={index}/>
             ))
           ) : (
             <td colSpan={4} className="py-5 text-center text-red-500">

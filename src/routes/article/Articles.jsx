@@ -1,10 +1,73 @@
+import { useState, useEffect } from "react";
 import Navbar from "../../layouts/Navbar";
 import Heading from "../../components/landing/headings/Heading";
 import ArticleList from "../../components/landing/lists/ArticleList";
 import Footer from "../../layouts/Footer";
 
-export default function Articles(){
-  return(
+export default function Articles() {
+  const [articles, setArticles] = useState([]);
+  const [articleCategories, setArticleCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [filterName, setFilterName] = useState("");
+  const [filterStatus, setFilterStatus] = useState("");
+
+  const fetchArticles = async () => {
+    try {
+      const articlesPromise = fetch(`http://localhost:3000/articles`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+
+      const categoriesPromise = fetch(
+        `http://localhost:3000/article-categories`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+
+      const [articlesResponse, categoriesResponse] = await Promise.all([
+        articlesPromise,
+        categoriesPromise,
+      ]);
+
+      if (!articlesResponse.ok || !categoriesResponse.ok) {
+        return;
+      }
+
+      const articlesData = await articlesResponse.json();
+      const categoriesData = await categoriesResponse.json();
+
+      setArticles(articlesData.data);
+      setArticleCategories(categoriesData.data);
+
+      console.log(articlesData, categoriesData);
+      setIsLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const filteredArticle = articles.filter((item) => {
+    const matchesName = item.title
+      .toLowerCase()
+      .includes(filterName.toLowerCase());
+
+    if (filterStatus === "") {
+      return matchesName;
+    } else {
+      return matchesName && item.Article_Category.name === filterStatus;
+    }
+  });
+
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+  return (
     <div className="bg-[#F9FBFD] overflow-x-hidden">
       <Navbar logoPath="assets/icons/baby-care-logo.png" />
 
@@ -20,9 +83,7 @@ export default function Articles(){
             <div className="flex flex-col gap-y-[30px]">
               {/* search */}
               <div className="grid md:grid-cols-3 gap-4 md:gap-6">
-                <div
-                  className="md:col-span-2 flex items-center w-full px-4 py-3.5 rounded-xl shadow-[0_2px_4px_0_rgba(0,0,0,0.10)] bg-white overflow-hidden gap-x-2"
-                >
+                <div className="md:col-span-2 flex items-center w-full px-4 py-3.5 rounded-xl shadow-[0_2px_4px_0_rgba(0,0,0,0.10)] bg-white overflow-hidden gap-x-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 text-gray-400"
@@ -40,42 +101,62 @@ export default function Articles(){
                   <input
                     className="peer h-full w-full outline-none text-sm placeholder:text-gray-400 text-[#36455B]"
                     type="text"
-                    id="search"
+                    value={filterName}
+                    onChange={(e) => setFilterName(e.target.value)}
                     placeholder="Search"
                   />
                 </div>
-      
+
                 {/* dropdown */}
                 <div className="relative w-full">
                   <select
-                    id="kategori"
-                    name="kategori"
+                    name="status"
+                    value={filterStatus}
+                    onChange={(e) => setFilterStatus(e.target.value)}
                     className="w-full rounded-lg border-none text-sm text-gray-400 px-4 py-3.5 shadow-[0_2px_4px_0_rgba(0,0,0,0.10)] focus:outline-none appearance-none"
-                    defaultValue="kategori"
                   >
-                    <option value="kategori" className="text-sm">Kategori</option>
-                    <option value="tips" className="text-sm">Tips</option>
-                    <option value="stimulasi" className="text-sm">Stimulasi</option>
-                    <option value="nutrisi" className="text-sm">Nutrisi</option>
+                    <option value="" className="text-sm">
+                      Semua
+                    </option>
+                    {articleCategories.length !== 0 &&
+                      articleCategories.map((category) => (
+                        <option
+                          value={category.name}
+                          key={category.id}
+                          className="text-sm"
+                        >
+                          {category.name}
+                        </option>
+                      ))}
                   </select>
                   <div className="absolute text-xl text-amber-500 font-bold top-1/2 right-[14px] translate-y-[-50%]">
-                    <svg 
+                    <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="fill-gray-400 h-[0.9em]"
-                      viewBox="0 0 448 512">
-                      <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+                      viewBox="0 0 448 512"
+                    >
+                      <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
                     </svg>
                   </div>
                 </div>
               </div>
-      
+
               {/* article */}
-              <ArticleList />
+              {!isLoading ? (
+                <ArticleList articles={filteredArticle}/>
+              ) : (
+                <h1>
+                  Loading...
+                </h1>
+              )}
 
               {/* pagination */}
               <div className="flex items-center justify-between">
                 {/* Prev */}
-                <a href="#" className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent">
+                <a
+                  href="#"
+                  className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4"
@@ -93,35 +174,53 @@ export default function Articles(){
                 </a>
 
                 <ul className="flex items-center gap-x-2">
-                  <li
-                    className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-white bg-[#1E3465]"
-                  >
-                    <a href="#" className="w-8 h-8 flex items-center justify-center">1</a>
+                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-white bg-[#1E3465]">
+                    <a
+                      href="#"
+                      className="w-8 h-8 flex items-center justify-center"
+                    >
+                      1
+                    </a>
                   </li>
-                  <li
-                    className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent"
-                  >
-                    <a href="#" className="w-8 h-8 flex items-center justify-center">2</a>
+                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent">
+                    <a
+                      href="#"
+                      className="w-8 h-8 flex items-center justify-center"
+                    >
+                      2
+                    </a>
                   </li>
-                  <li
-                    className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent"
-                  >
-                    <a href="#" className="w-8 h-8 flex items-center justify-center">3</a>
+                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent">
+                    <a
+                      href="#"
+                      className="w-8 h-8 flex items-center justify-center"
+                    >
+                      3
+                    </a>
                   </li>
-                  <li
-                    className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent"
-                  >
-                    <a href="#" className="w-8 h-8 flex items-center justify-center">4</a>
+                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent">
+                    <a
+                      href="#"
+                      className="w-8 h-8 flex items-center justify-center"
+                    >
+                      4
+                    </a>
                   </li>
-                  <li
-                    className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent"
-                  >
-                    <a href="#" className="w-8 h-8 flex items-center justify-center">5</a>
+                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent">
+                    <a
+                      href="#"
+                      className="w-8 h-8 flex items-center justify-center"
+                    >
+                      5
+                    </a>
                   </li>
                 </ul>
 
                 {/* Next */}
-                <a href="#" className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent">
+                <a
+                  href="#"
+                  className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4"
@@ -138,8 +237,8 @@ export default function Articles(){
                   </svg>
                 </a>
               </div>
+            </div>
           </div>
-        </div>
         </div>
       </section>
       <Footer
@@ -148,7 +247,7 @@ export default function Articles(){
         instagramPath="assets/icons/instagram.png"
         twitterPath="assets/icons/twitter.png"
         youtubePath="assets/icons/youtube.png"
-      /> 
+      />
     </div>
   );
 }

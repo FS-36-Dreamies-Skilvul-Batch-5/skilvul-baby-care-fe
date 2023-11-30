@@ -1,9 +1,11 @@
 import { useState } from "react";
-import DeleteArticleCategoryModal from "../modals/DeleteArticleCategoryModal";
-import EditArticleCategoryModal from "../modals/EditArticleCategoryModal";
+import { convertHumanReadDateFormat } from "../../../../utils/convertHumanReadDateFormat"
+import EditArticleModal from "../modals/EditArticleModal";
+import DeleteArticleModal from "../modals/DeleteArticleModal";
 
-export default function ArticleCategoryCard(props) {
-  const { category_number, id, name } = props;
+export default function ArticleCard(props) {
+  const { article_number, id, title, Article_Category, img_url, content, posted_on } = props;
+  const { name } = Article_Category;
 
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -19,8 +21,13 @@ export default function ArticleCategoryCard(props) {
   return (
     <>
       <tr className="border-b border-[#D1D9E2]">
-        <td className="text-[#898989] text-center py-3.5">{category_number + 1}</td>
+        <td className="text-[#898989] text-center py-3.5">
+          {article_number + 1}
+        </td>
+        <td className="text-[#898989] text-center py-3.5">{title}</td>
         <td className="text-[#898989] text-center py-3.5">{name}</td>
+        <td className="text-[#898989] text-center py-3.5">{img_url ? img_url : '-'}</td>
+        <td className="text-[#898989] text-center py-3.5">{convertHumanReadDateFormat(posted_on)}</td>
         <td className="text-[#898989] text-center py-3.5 px-5">
           <span className="w-full flex justify-center gap-x-2">
             <button
@@ -30,9 +37,8 @@ export default function ArticleCategoryCard(props) {
               <EditSVG />
             </button>
             {showEditModal && (
-              <EditArticleCategoryModal
-                category={name}
-                categoryId={id}
+              <EditArticleModal
+                articleInfo={props}
                 handleEditModal={toggleEditModal}
               />
             )}
@@ -44,8 +50,8 @@ export default function ArticleCategoryCard(props) {
               <DeleteSVG />
             </button>
             {showDeleteModal && (
-              <DeleteArticleCategoryModal
-                categoryId={id}
+              <DeleteArticleModal
+                articleId={id}
                 handleDeleteModal={toggleDeleteModal}
               />
             )}

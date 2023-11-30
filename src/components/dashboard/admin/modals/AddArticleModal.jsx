@@ -68,11 +68,11 @@ export default function AddArticleModal({ articleCategories, handleAddModal }) {
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-screen bg-black/50 z-[99]">
-        <div className="flex w-full h-full justify-center items-center py-6 px-6">
+        <div className="flex w-full h-full justify-center items-center">
           <form
             onSubmit={submit}
             encType="multipart/form-data"
-            className="relative flex flex-col w-full max-w-[1000px] h-auto py-[26px] px-[18px] min-[840px]:px-[26px] bg-white rounded-xl gap-y-6 min-[840px]:gap-y-8"
+            className="relative flex flex-col w-full h-full py-[26px] px-[18px] min-[840px]:px-[26px] bg-white gap-y-4 min-[840px]:gap-y-6 overflow-y-scroll"
           >
             <div className="text-start min-[840px]:text-center">
               <h1 className="font-bold text-[22px] min-[840px]:text-[24px] text-[#272C49]">
@@ -82,12 +82,36 @@ export default function AddArticleModal({ articleCategories, handleAddModal }) {
                 Isi data berikut untuk membuat artikel baru
               </p>
             </div>
-            <div className="flex flex-col gap-y-5">
-              <div className="grid sm:grid-cols-3 gap-x-4 gap-y-3">
+            <div className="flex flex-col sm:flex-row gap-x-5 gap-y-3">
+              <div className="flex-1">
+                <Editor
+                  onEditorChange={(content, editor) => {
+                    setAddArticleFormData((prevData) => ({
+                      ...prevData,
+                      content: content,
+                    }));
+                  }}
+                  apiKey="8m6jx76l32mjhubr7pacf50xxxa2r6lvttrvl2fdetn6pk2e"
+                  init={{
+                    height: 700,
+                    max_width: 1800,
+                    plugins:
+                      "tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste typography inlinecss",
+                    toolbar:
+                      "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+                    tinycomments_mode: "embedded",
+                    tinycomments_author: "BabyCare",
+                    mergetags_list: [],
+                    placeholder: "Tulis Konten Disini",
+                  }}
+                  ref={editorRef}
+                />
+              </div>
+              <div className="w-full max-w-[400px] flex flex-col gap-x-4 gap-y-4">
                 <input
                   type="text"
                   name="title"
-                  className="sm:col-span-2 text-sm min-[840px]:text-base px-3 py-2 focus:outline-none border border-[#D1D9E2] text-[#474F7C] placeholder:text-[#898989] rounded-lg"
+                  className="text-sm min-[840px]:text-base px-3 py-2 focus:outline-none border border-[#D1D9E2] text-[#474F7C] placeholder:text-[#898989] rounded-lg"
                   placeholder="Judul Artikel"
                   value={addArticleFormData.title}
                   onChange={handleInputChange}
@@ -116,44 +140,22 @@ export default function AddArticleModal({ articleCategories, handleAddModal }) {
                     </svg>
                   </div>
                 </div>
+                <input
+                  type="file"
+                  name="img_url"
+                  className="text-sm min-[840px]:text-base px-3 py-2 focus:outline-none border border-[#D1D9E2] text-[#474F7C] placeholder:text-[#898989] rounded-lg"
+                  onChange={handleImageChange}
+                  required
+                ></input>
+
+                <button
+                  type="submit"
+                  className="font-semibold w-full bg-[#1E3465] px-2 py-2.5 text-white rounded-lg text-sm min-[840px]:text-base"
+                >
+                  Buat Artikel
+                </button>
               </div>
-
-              <input
-                type="file"
-                name="img_url"
-                className="text-sm min-[840px]:text-base px-3 py-2 focus:outline-none border border-[#D1D9E2] text-[#474F7C] placeholder:text-[#898989] rounded-lg"
-                onChange={handleImageChange}
-                required
-              ></input>
-
-              <Editor
-                // value={addArticleFormData.content}
-                onEditorChange={(content, editor) => {
-                  setAddArticleFormData((prevData) => ({
-                    ...prevData,
-                    content: content,
-                  }));
-                }}
-                apiKey="8m6jx76l32mjhubr7pacf50xxxa2r6lvttrvl2fdetn6pk2e"
-                init={{
-                  plugins:
-                    "tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste typography inlinecss",
-                  toolbar:
-                    "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
-                  tinycomments_mode: "embedded",
-                  tinycomments_author: "BabyCare",
-                  mergetags_list: [],
-                  placeholder: "Tulis Konten Disini",
-                }}
-                ref={editorRef}
-              />
             </div>
-            <button
-              type="submit"
-              className="font-semibold w-full bg-[#1E3465] px-2 py-2.5 text-white rounded-lg text-sm min-[840px]:text-base"
-            >
-              Buat Artikel
-            </button>
 
             <button
               onClick={handleAddModal}

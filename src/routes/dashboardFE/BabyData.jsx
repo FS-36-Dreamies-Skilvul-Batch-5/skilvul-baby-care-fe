@@ -12,15 +12,28 @@ import { convertHumanReadDateFormat } from "../../utils/convertHumanReadDateForm
 import { checkUserRole } from "../../utils/auth/checkUserRole";
 
 export default function BabyData() {
-  checkUserRole('user');
+  checkUserRole("user");
 
   const [selectedFilter, setSelectedFilter] = useState("Semua");
   const [babyNutritionRecords, setBabyNutritionRecords] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState("");
 
   const toggleAddModal = () => {
     setShowAddModal((prev) => !prev);
+  };
+
+  const handlePrevPage = () => {
+    if (page > 1) {
+      setPage((prev) => prev - 1);
+    }
+  };
+  const handleNextPage = () => {
+    if (page < totalPage) {
+      setPage((prev) => prev + 1);
+    }
   };
 
   const handleFilterChange = (e) => {
@@ -33,7 +46,7 @@ export default function BabyData() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/babies/${babyId}/nutrition-records`,
+        `http://localhost:3000/babies/${babyId}/nutrition-records?page=${page}`,
         {
           method: "GET",
           headers: {
@@ -49,15 +62,16 @@ export default function BabyData() {
 
       const data = await response.json();
       setBabyNutritionRecords(data.data);
-      console.log(data);
+      setTotalPage(data.pagination.totalPages);
       setIsLoading(false);
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
   };
 
   const babyAge = calculateBabyAgeInMonths(localStorage.getItem("baby_birth"));
-  console.log(babyAge)
+  console.log(babyAge);
   const babyGender = localStorage.getItem("gender");
 
   const NutritionRecordsWithConclusion = babyNutritionRecords.map((record) => ({
@@ -85,12 +99,16 @@ export default function BabyData() {
       return item.nutrition_status == "Gizi Lebih";
     } else if (selectedFilter == "Obesitas") {
       return item.nutrition_status == "Obesitas";
-    } 
+    }
   });
 
   useEffect(() => {
     fetchBabyNutritionRecord();
   }, []);
+
+  useEffect(() => {
+    fetchBabyNutritionRecord();
+  }, [page]);
   return (
     <>
       <Sidebar />
@@ -124,7 +142,9 @@ export default function BabyData() {
                   <option value="Gizi Buruk">Gizi Buruk</option>
                   <option value="Gizi Kurang">Gizi Kurang</option>
                   <option value="Gizi Baik">Gizi Baik</option>
-                  <option value="Beresiko Gizi Lebih">Beresiko Gizi Lebih</option>
+                  <option value="Beresiko Gizi Lebih">
+                    Beresiko Gizi Lebih
+                  </option>
                   <option value="Gizi Lebih">Gizi Lebih</option>
                   <option value="Obesitas">Obesitas</option>
                 </select>
@@ -142,11 +162,67 @@ export default function BabyData() {
               <AddDataButton handleAddModal={toggleAddModal} />
             </div>
 
-            {!isLoading ? (
-              <BabyNutritionRecordList records={filteredData} />
-            ) : (
-              <h1>Loading...</h1>
-            )}
+            <div>
+              {!isLoading ? (
+                <BabyNutritionRecordList records={filteredData} />
+              ) : (
+                <h1>Loading...</h1>
+              )}
+
+              {/* pagination */}
+              <div className="flex items-center justify-between border-r border-l border-b border-[#D1D9E2] rounded-b-xl px-5 pb-4 pt-9 -mt-1">
+                {/* Prev */}
+                <button
+                  onClick={handlePrevPage}
+                  className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="4"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+
+                <div className="flex items-center gap-x-2">
+                  <div className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-white bg-[#1E3465]">
+                    <span className="w-8 h-8 flex items-center justify-center">
+                      {page}
+                    </span>
+                  </div>
+                  <div>dari {totalPage}</div>
+                </div>
+
+                {/* Next */}
+                <button
+                  onClick={handleNextPage}
+                  className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="4"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

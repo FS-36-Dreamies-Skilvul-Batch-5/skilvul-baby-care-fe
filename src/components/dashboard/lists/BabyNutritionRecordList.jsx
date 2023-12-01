@@ -2,7 +2,7 @@ import BabyNutritionRecordCard from "../cards/BabyNutritionRecordCard";
 
 export default function BabyNutritionRecordList({records}) {
   return (
-    <div className="w-full border border-[#D1D9E2] rounded-xl overflow-x-scroll scrollbar__hidden">
+    <div className="w-full border border-[#D1D9E2] rounded-t-xl overflow-x-scroll scrollbar__hidden">
       <table className="w-full min-w-[1024px] table-fixed border-collapse select-none">
         <thead>
           <tr className="border-b border-[#D1D9E2]">

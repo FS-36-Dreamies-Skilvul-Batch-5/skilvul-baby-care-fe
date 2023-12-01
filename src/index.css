@@ -4,6 +4,7 @@
 
 *{
   font-family: 'Poppins', sans-serif;
+  user-select: none;
 }
 
 html{
@@ -54,4 +55,19 @@ html{
 
 .raw_ol_element div ol{
   @apply list-disc list-outside pl-5 text-sm min-[840px]:text-base
+}
+
+.article__content div h1{
+
+}
+.article__content div > *{
+  @apply mb-[10px]
+}
+
+.article__content div ol{
+  @apply list-disc list-outside pl-5
+}
+
+.article__content div ol li p:first-child{
+  @apply font-bold
 }

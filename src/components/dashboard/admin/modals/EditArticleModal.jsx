@@ -33,7 +33,7 @@ export default function EditArticleModal({ articleInfo, handleEditModal }) {
     console.log(editArticleFormData);
   };
 
-  const fetchAddArticle = async () => {
+  const fetchEditArticle = async () => {
     const token = localStorage.getItem("token");
     const formDataToSend = new FormData();
 
@@ -87,7 +87,7 @@ export default function EditArticleModal({ articleInfo, handleEditModal }) {
 
   const submit = (e) => {
     e.preventDefault();
-    fetchAddArticle();
+    fetchEditArticle();
   };
 
   useEffect(() => {

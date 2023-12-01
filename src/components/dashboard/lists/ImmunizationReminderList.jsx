@@ -61,8 +61,6 @@ export default function ImmunizationReminderList() {
     }
   );
 
-  console.log(filteredVaccinationRecord.slice(0, 3));
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -71,7 +69,7 @@ export default function ImmunizationReminderList() {
       {!isLoading ? (
         <div className="flex flex-col justify-center items-center gap-y-4">
           {filteredVaccinationRecord.slice(0, 3).map((item) => (
-            <div className="w-full px-5 py-4 rounded-xl border border-[#D1D9E2]">
+            <div className="w-full px-5 py-4 rounded-xl border border-[#D1D9E2]" key={item.id}>
               <h3 className="font-bold text-[#36455B]">{item.name}</h3>
               <div className="flex items-center gap-x-1 mt-1">
                 <svg

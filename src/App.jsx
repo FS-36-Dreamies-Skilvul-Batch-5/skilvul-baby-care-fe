@@ -10,6 +10,7 @@ import Main from "./routes/dashboardFE/Main";
 import BabyChart from "./routes/dashboardFE/BabyChart";
 import BabyData from "./routes/dashboardFE/BabyData";
 import Immunization from "./routes/dashboardFE/Immunization";
+import UserAndBabyProfile from "./routes/dashboardFE/UserAndBabyProfile";
 import User from "./routes/dashboardFE/admin/User";
 import Article from "./routes/dashboardFE/admin/Article";
 import ArticleCategory from "./routes/dashboardFE/admin/ArticleCategory";
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/dashboard/baby-chart" element={<BabyChart />} /> 
         <Route path="/dashboard/baby-data" element={<BabyData />} /> 
         <Route path="/dashboard/immunization" element={<Immunization/>}/> 
+        <Route path="/dashboard/profile" element={<UserAndBabyProfile/>}/> 
 
         {/* Admin */}
         <Route path="/dashboard/user" element={<User />} /> 

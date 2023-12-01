@@ -2,7 +2,7 @@ import ArticleCard from "../cards/ArticleCard";
 
 export default function ArticleList({articles}) {
   return (
-    <div className="w-full border border-[#D1D9E2] rounded-xl overflow-x-scroll scrollbar__hidden">
+    <div className="w-full border border-[#D1D9E2] rounded-t-xl overflow-x-scroll scrollbar__hidden">
       <table className="w-full min-w-[1024px] table-auto border-collapse select-none">
         <thead>
           <tr className="border-b border-[#D1D9E2]">

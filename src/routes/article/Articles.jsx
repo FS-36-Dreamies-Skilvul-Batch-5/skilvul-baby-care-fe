@@ -191,48 +191,6 @@ export default function Articles() {
                   </svg>
                 </button>
 
-                {/* <ul className="flex items-center gap-x-2">
-                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-white bg-[#1E3465]">
-                    <a
-                      href="#"
-                      className="w-8 h-8 flex items-center justify-center"
-                    >
-                      1
-                    </a>
-                  </li>
-                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent">
-                    <a
-                      href="#"
-                      className="w-8 h-8 flex items-center justify-center"
-                    >
-                      2
-                    </a>
-                  </li>
-                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent">
-                    <a
-                      href="#"
-                      className="w-8 h-8 flex items-center justify-center"
-                    >
-                      3
-                    </a>
-                  </li>
-                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent">
-                    <a
-                      href="#"
-                      className="w-8 h-8 flex items-center justify-center"
-                    >
-                      4
-                    </a>
-                  </li>
-                  <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-[#1E3465] bg-transparent">
-                    <a
-                      href="#"
-                      className="w-8 h-8 flex items-center justify-center"
-                    >
-                      5
-                    </a>
-                  </li>
-                </ul> */}
                 <div className="flex items-center gap-x-2">
                   <div className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-white bg-[#1E3465]">
                     <span

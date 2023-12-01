@@ -15,42 +15,59 @@ export default function Article() {
   const [isLoading, setIsLoading] = useState(true);
   const [filterName, setFilterName] = useState("");
   const [filterStatus, setFilterStatus] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState("");
 
   const toggleAddModal = () => {
     setShowAddModal((prev) => !prev);
   };
 
+  const handlePrevPage = () => {
+    if (page > 1) {
+      setPage((prev) => prev - 1);
+    }
+  };
+  const handleNextPage = () => {
+    if (page < totalPage) {
+      setPage((prev) => prev + 1);
+    }
+  };
+
   const fetchArticles = async () => {
     try {
-      const articlesPromise = fetch(`http://localhost:3000/articles`, {
+      const articlesPromise = fetch(`http://localhost:3000/articles?page=${page}&pageSize=10`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
         },
       });
-  
-      const categoriesPromise = fetch(`http://localhost:3000/article-categories`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      });
-  
+
+      const categoriesPromise = fetch(
+        `http://localhost:3000/article-categories`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      );
+
       const [articlesResponse, categoriesResponse] = await Promise.all([
         articlesPromise,
         categoriesPromise,
       ]);
-  
+
       if (!articlesResponse.ok || !categoriesResponse.ok) {
         return;
       }
-  
+
       const articlesData = await articlesResponse.json();
       const categoriesData = await categoriesResponse.json();
-  
+
       setArticles(articlesData.data);
       setArticleCategories(categoriesData.data);
-  
+      setTotalPage(articlesData.pagination.totalPages);
+
       console.log(articlesData, categoriesData);
       setIsLoading(false);
     } catch (err) {
@@ -59,7 +76,9 @@ export default function Article() {
   };
 
   const filteredArticle = articles.filter((item) => {
-    const matchesName = item.title.toLowerCase().includes(filterName.toLowerCase());
+    const matchesName = item.title
+      .toLowerCase()
+      .includes(filterName.toLowerCase());
 
     if (filterStatus === "") {
       return matchesName;
@@ -71,6 +90,10 @@ export default function Article() {
   useEffect(() => {
     fetchArticles();
   }, []);
+
+  useEffect(() => {
+    fetchArticles();
+  }, [page]);
 
   return (
     <>
@@ -118,7 +141,9 @@ export default function Article() {
                 >
                   <option value="">Semua</option>
                   {articleCategories.map((category) => (
-                    <option value={category.name} key={category.id}>{category.name}</option>
+                    <option value={category.name} key={category.id}>
+                      {category.name}
+                    </option>
                   ))}
                 </select>
                 <div className="absolute text-xl text-amber-500 font-bold top-1/2 right-[14px] translate-y-[-50%]">
@@ -135,16 +160,77 @@ export default function Article() {
               <AddDataButton handleAddModal={toggleAddModal} />
             </div>
 
-            {!isLoading ? (
-              <ArticleList articles={filteredArticle}  />
-            ) : (
+            <div>
+              {!isLoading ? (
+                <ArticleList articles={filteredArticle} />
+              ) : (
               <h1>Loading...</h1>
-            )}
+              )}
+
+              {/* pagination */}
+              <div className="flex items-center justify-between border-r border-l border-b border-[#D1D9E2] rounded-b-xl px-5 pb-4 pt-9 -mt-1">
+                {/* Prev */}
+                <button
+                  onClick={handlePrevPage}
+                  className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="4"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+
+                <div className="flex items-center gap-x-2">
+                  <div className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-white bg-[#1E3465]">
+                    <span className="w-8 h-8 flex items-center justify-center">
+                      {page}
+                    </span>
+                  </div>
+                  <div>dari {totalPage}</div>
+                </div>
+
+                {/* Next */}
+                <button
+                  onClick={handleNextPage}
+                  className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="4"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {showAddModal && <AddArticleModal articleCategories={articleCategories} handleAddModal={toggleAddModal} />}
+      {showAddModal && (
+        <AddArticleModal
+          articleCategories={articleCategories}
+          handleAddModal={toggleAddModal}
+        />
+      )}
     </>
   );
 }

@@ -17,9 +17,8 @@ export default function ArticleCard(props) {
     <div className="flex flex-col w-full rounded-xl p-5 mb-4 bg-white shadow-[2px_4px_10px_0_rgba(0,0,0,0.10)]">
       <div className="h-auto w-full">
         <img
-          src="assets/images/article-lima-kebiasaan-bayi-baru-lahir.webp"
-          // src={`http://localhost:3000/article-images/${img_url}.webp`}
-          className="w-full object-cover rounded-xl"
+          src={`http://localhost:3000/article-image/${img_url}`}
+          className="w-full h-[200px] object-cover rounded-xl"
           alt={title}
         />
       </div>

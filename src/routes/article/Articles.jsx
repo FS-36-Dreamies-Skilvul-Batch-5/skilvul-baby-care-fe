@@ -10,10 +10,23 @@ export default function Articles() {
   const [isLoading, setIsLoading] = useState(true);
   const [filterName, setFilterName] = useState("");
   const [filterStatus, setFilterStatus] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState("");
+
+  const handlePrevPage = () => {
+    if(page > 1){
+      setPage(prev => prev - 1)
+    }
+  }
+  const handleNextPage = () => {
+    if(page < totalPage){
+      setPage(prev => prev + 1)
+    }
+  }
 
   const fetchArticles = async () => {
     try {
-      const articlesPromise = fetch(`http://localhost:3000/articles`, {
+      const articlesPromise = fetch(`http://localhost:3000/articles?page=${page}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -44,6 +57,7 @@ export default function Articles() {
 
       setArticles(articlesData.data);
       setArticleCategories(categoriesData.data);
+      setTotalPage(articlesData.pagination.totalPages);
 
       console.log(articlesData, categoriesData);
       setIsLoading(false);
@@ -67,6 +81,10 @@ export default function Articles() {
   useEffect(() => {
     fetchArticles();
   }, []);
+
+  useEffect(() => {
+    fetchArticles();
+  }, [page])
   return (
     <div className="bg-[#F9FBFD] overflow-x-hidden">
       <Navbar logoPath="assets/icons/baby-care-logo.png" />
@@ -153,8 +171,8 @@ export default function Articles() {
               {/* pagination */}
               <div className="flex items-center justify-between">
                 {/* Prev */}
-                <a
-                  href="#"
+                <button
+                  onClick={handlePrevPage}
                   className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent"
                 >
                   <svg
@@ -171,9 +189,9 @@ export default function Articles() {
                       d="M15 19l-7-7 7-7"
                     />
                   </svg>
-                </a>
+                </button>
 
-                <ul className="flex items-center gap-x-2">
+                {/* <ul className="flex items-center gap-x-2">
                   <li className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-white bg-[#1E3465]">
                     <a
                       href="#"
@@ -214,11 +232,23 @@ export default function Articles() {
                       5
                     </a>
                   </li>
-                </ul>
+                </ul> */}
+                <div className="flex items-center gap-x-2">
+                  <div className="border-[2.5px] border-[#1E3465] rounded-full font-semibold text-lg text-white bg-[#1E3465]">
+                    <span
+                      className="w-8 h-8 flex items-center justify-center"
+                    >
+                      {page}
+                    </span>
+                  </div>
+                  <div>
+                    dari {totalPage}
+                  </div>
+                </div>
 
                 {/* Next */}
-                <a
-                  href="#"
+                <button
+                  onClick={handleNextPage}
                   className="w-8 h-8 flex items-center justify-center border-[2.5px] border-[#1E3465] rounded-full font-medium text-lg text-[#1E3465] bg-transparent"
                 >
                   <svg
@@ -235,7 +265,7 @@ export default function Articles() {
                       d="M9 5l7 7-7 7"
                     />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </div>

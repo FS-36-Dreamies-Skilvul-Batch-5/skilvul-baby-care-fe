@@ -9,7 +9,7 @@ export default function Profile(){
   const getUserData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/users/${userId}`,
+        `${import.meta.env.VITE_API_URL}/users/${userId}`,
         {
           method: "GET",
           headers: {

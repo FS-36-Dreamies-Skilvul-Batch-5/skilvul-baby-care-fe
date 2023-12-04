@@ -44,7 +44,7 @@ export default function EditArticleModal({ articleInfo, handleEditModal }) {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/articles/${articleInfo.id}`,
+        `${import.meta.env.VITE_API_URL}/articles/${articleInfo.id}`,
         {
           method: "PUT",
           headers: {
@@ -68,7 +68,7 @@ export default function EditArticleModal({ articleInfo, handleEditModal }) {
 
   const fetchArticleCategories = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/article-categories`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/article-categories`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

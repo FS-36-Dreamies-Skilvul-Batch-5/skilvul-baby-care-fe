@@ -24,7 +24,7 @@ export default function AddVaccinationRecordModal({ vaccine_info, handleAddModal
 
     try {
       const response = await fetch(
-        `http://localhost:3000/vaccination-records`,
+        `${import.meta.env.VITE_API_URL}/vaccination-records`,
         {
           method: "POST",
           headers: {

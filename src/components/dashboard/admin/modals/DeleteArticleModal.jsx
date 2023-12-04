@@ -7,7 +7,7 @@ export default function DeleteArticleModal({
 
     try {
       const response = await fetch(
-        `http://localhost:3000/articles/${articleId}`,
+        `${import.meta.env.VITE_API_URL}/articles/${articleId}`,
         {
           method: "DELETE",
           headers: {

@@ -7,7 +7,7 @@ export default function DeleteArticleCategoryModal({
 
     try {
       const response = await fetch(
-        `http://localhost:3000/article-categories/${categoryId}`,
+        `${import.meta.env.VITE_API_URL}/article-categories/${categoryId}`,
         {
           method: "DELETE",
           headers: {

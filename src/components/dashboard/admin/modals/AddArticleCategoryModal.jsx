@@ -12,7 +12,7 @@ export default function AddArticleCategoryModal({ handleAddModal }) {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/article-categories`,
+        `${import.meta.env.VITE_API_URL}/article-categories`,
         {
           method: "POST",
           headers: {

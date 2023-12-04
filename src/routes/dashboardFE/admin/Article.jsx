@@ -35,7 +35,7 @@ export default function Article() {
 
   const fetchArticles = async () => {
     try {
-      const articlesPromise = fetch(`http://localhost:3000/articles?page=${page}&pageSize=10`, {
+      const articlesPromise = fetch(`${import.meta.env.VITE_API_URL}/articles?page=${page}&pageSize=10`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -43,7 +43,7 @@ export default function Article() {
       });
 
       const categoriesPromise = fetch(
-        `http://localhost:3000/article-categories`,
+        `${import.meta.env.VITE_API_URL}/article-categories`,
         {
           method: "GET",
           headers: {

@@ -41,7 +41,7 @@ export default function EditUserModal({ userData, handleEditModal }) {
     console.log(formDataToSend)
 
     try {
-      const response = await fetch(`http://localhost:3000/users/${userData.id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userData.id}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,

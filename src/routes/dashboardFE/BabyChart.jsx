@@ -54,7 +54,7 @@ export default function BabyChart() {
   const fetchBabyNutritionRecord = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/babies/${babyId}/nutrition-records`,
+        `${import.meta.env.VITE_API_URL}/babies/${babyId}/nutrition-records`,
         {
           method: "GET",
           headers: {

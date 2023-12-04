@@ -54,7 +54,7 @@ export default function UserProfileCard() {
             <img
               src={`${
                 userData.img_url !== ""
-                  ? `http://localhost:3000/user-image/${userData.img_url}`
+                  ? `${userData.img_url}`
                   : "../assets/images/users/user-default.png"
               }`}
               alt="User's Profile Picture"

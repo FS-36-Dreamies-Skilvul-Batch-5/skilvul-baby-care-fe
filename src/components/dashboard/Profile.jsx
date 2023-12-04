@@ -34,7 +34,7 @@ export default function Profile(){
   }, [])
   return(
     <div className="flex items-center gap-x-3">
-      <img src={userData.img_url !== "" ? `http://localhost:3000/user-image/${userData.img_url}` : "../assets/images/users/user-default.png"}
+      <img src={userData.img_url !== "" ? `${userData.img_url}` : "../assets/images/users/user-default.png"}
         alt="User's Profile Picture"
         className="w-[50px] h-[50px] shrink-0 border-2 border-[#272C49] rounded-full object-cover"
       ></img>

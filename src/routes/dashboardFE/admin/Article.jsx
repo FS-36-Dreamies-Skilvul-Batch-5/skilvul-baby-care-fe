@@ -35,7 +35,7 @@ export default function Article() {
 
   const fetchArticles = async () => {
     try {
-      const articlesPromise = fetch(`http://localhost:3000/articles?page=${page}&pageSize=10`, {
+      const articlesPromise = fetch(`${import.meta.env.VITE_API_URL}/articles?page=${page}&pageSize=10`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -43,7 +43,7 @@ export default function Article() {
       });
 
       const categoriesPromise = fetch(
-        `http://localhost:3000/article-categories`,
+        `${import.meta.env.VITE_API_URL}/article-categories`,
         {
           method: "GET",
           headers: {
@@ -100,7 +100,7 @@ export default function Article() {
       <AdminSidebar />
 
       <div className="min-[840px]:pl-[62px] pt-12 min-[840px]:pt-0 pb-0">
-        <div className="flex flex-col w-full h-screen py-10 px-[20px] sm:px-[35px] min-[840px]:pl-[55px] gap-y-6 overflow-y-hidden">
+        <div className="flex flex-col w-full h-auto py-10 px-[20px] sm:px-[35px] min-[840px]:pl-[55px] gap-y-6 overflow-y-hidden">
           <div className="w-full flex flex-col text-start mb-2">
             <Heading text="Artikel" ket="Berikut merupakan list artikel" />
           </div>

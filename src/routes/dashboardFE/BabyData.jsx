@@ -46,7 +46,7 @@ export default function BabyData() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/babies/${babyId}/nutrition-records?page=${page}`,
+        `${import.meta.env.VITE_API_URL}/babies/${babyId}/nutrition-records?page=${page}`,
         {
           method: "GET",
           headers: {

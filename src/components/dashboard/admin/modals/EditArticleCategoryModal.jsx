@@ -11,7 +11,7 @@ export default function EditArticleCategoryModal({ category, categoryId, handleE
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(`http://localhost:3000/article-categories/${categoryId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/article-categories/${categoryId}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

@@ -24,9 +24,6 @@ export default function UserCard(props) {
         <td className="text-[#898989] text-center py-3.5">{username}</td>
         <td className="text-[#898989] text-center py-3.5">{email}</td>
         <td className="text-[#898989] text-center py-3.5">
-          {img_url ? img_url : "-"}
-        </td>
-        <td className="text-[#898989] text-center py-3.5">
           <span
             className={`${
               role == "admin" ? "bg-[#364f85]" : "bg-[#6a758f]"

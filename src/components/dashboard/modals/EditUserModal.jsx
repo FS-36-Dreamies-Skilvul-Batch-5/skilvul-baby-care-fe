@@ -9,6 +9,7 @@ export default function EditUserModal({ userData, handleEditModal }) {
     // img_url: userData.img_url,
     role: "user"
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +41,7 @@ export default function EditUserModal({ userData, handleEditModal }) {
     console.log(formDataToSend)
 
     try {
-      const response = await fetch(`http://localhost:3000/users/${userData.id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userData.id}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -61,6 +62,7 @@ export default function EditUserModal({ userData, handleEditModal }) {
   };
 
   const submit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
     fetchEditUser();
   };
@@ -125,12 +127,24 @@ export default function EditUserModal({ userData, handleEditModal }) {
                 onChange={handleImageChange}
               ></input>
             </div>
-            <button
-              type="submit"
-              className="font-semibold w-full bg-[#1E3465] px-2 py-2.5 text-white rounded-lg text-sm min-[840px]:text-base"
-            >
-              Edit
-            </button>
+            {!isLoading ? (
+              <button
+                type="submit"
+                className="font-semibold w-full bg-[#1E3465] px-2 py-2.5 text-white rounded-lg text-sm min-[840px]:text-base"
+              >
+                Edit
+              </button>
+            ) : (
+              <div className="w-full flex justify-center items-center bg-[#1E3465] px-2 py-3 text-white rounded-lg">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 fill-white animate-spin"
+                  viewBox="0 0 512 512"
+                >
+                  <path d="M222.7 32.1c5 16.9-4.6 34.8-21.5 39.8C121.8 95.6 64 169.1 64 256c0 106 86 192 192 192s192-86 192-192c0-86.9-57.8-160.4-137.1-184.1c-16.9-5-26.6-22.9-21.5-39.8s22.9-26.6 39.8-21.5C434.9 42.1 512 140 512 256c0 141.4-114.6 256-256 256S0 397.4 0 256C0 140 77.1 42.1 182.9 10.6c16.9-5 34.8 4.6 39.8 21.5z" />
+                </svg>
+              </div>
+            )}
 
             <button
               onClick={handleEditModal}

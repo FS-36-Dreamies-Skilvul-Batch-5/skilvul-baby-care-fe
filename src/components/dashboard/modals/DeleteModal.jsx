@@ -7,7 +7,7 @@ export default function DeleteModal({
 
     try {
       const response = await fetch(
-        `http://localhost:3000/nutrition-records/${nutrition_record_id}`,
+        `${import.meta.env.VITE_API_URL}/nutrition-records/${nutrition_record_id}`,
         {
           method: "DELETE",
           headers: {

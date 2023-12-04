@@ -27,7 +27,7 @@ export default function User() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/users`,
+        `${import.meta.env.VITE_API_URL}/users`,
         {
           method: "GET",
           headers: {

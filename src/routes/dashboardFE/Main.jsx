@@ -26,7 +26,7 @@ export default function Main() {
   if (userId !== undefined && token !== undefined) {
     const checkUserRole = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/users/${userId}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
           method: "GET",
           headers: {
             "content-type": "application/json",
@@ -59,7 +59,7 @@ export default function Main() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/babies/${babyId}/nutrition-records`,
+        `${import.meta.env.VITE_API_URL}/babies/${babyId}/nutrition-records`,
         {
           method: "GET",
           headers: {
@@ -84,7 +84,7 @@ export default function Main() {
   const fetchUserBaby = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/users/${userId}/baby`,
+        `${import.meta.env.VITE_API_URL}/users/${userId}/baby`,
         {
           method: "GET",
           headers: {

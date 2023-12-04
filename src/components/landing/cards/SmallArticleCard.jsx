@@ -11,7 +11,7 @@ export default function SmallArticleCard({ articles }) {
             <Link to={`/articles/${article.id}`}>
               <div className="shrink-0 w-[128px] lg:w-[140px] h-[128px] lg:h-[140px]">
                 <img
-                  src={`http://localhost:3000/article-image/${article.img_url}`}
+                  src={article.img_url}
                   alt={article.title}
                   className="w-full aspect-square object-cover rounded-xl"
                 ></img>

@@ -21,7 +21,7 @@ export default function EditUserModal({ user_data, handleEditModal }) {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(`http://localhost:3000/users/${user_data.id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${user_data.id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

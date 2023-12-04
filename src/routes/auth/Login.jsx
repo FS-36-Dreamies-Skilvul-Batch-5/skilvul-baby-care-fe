@@ -3,31 +3,34 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   const [loginFormData, setLoginFormData] = useState({
-    email: '',
-    password: '',
-    rememberMe: false
+    email: "",
+    password: "",
+    rememberMe: false,
   });
   const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const handleInputChange = (event) => {
-    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    const value =
+      event.target.type === "checkbox"
+        ? event.target.checked
+        : event.target.value;
 
     setLoginFormData({
       ...loginFormData,
-      [event.target.name] : value
-    })
+      [event.target.name]: value,
+    });
   };
 
   const submit = async (e) => {
     e.preventDefault();
 
-    try{
-      const response = await fetch('http://localhost:3000/auth/login', {
-        method: 'POST',
-        headers: {'content-type':'application/json'},
-        body: JSON.stringify(loginFormData)
-      })
-    
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(loginFormData),
+      });
+
       if (!response.ok) {
         setShowErrorMessage(true);
         return;
@@ -37,23 +40,25 @@ export default function Login() {
       setShowErrorMessage(false);
       console.log(data);
       // Store in LS
-      localStorage.setItem('user_id', data.userId);
-      localStorage.setItem('token', data.token);
+      localStorage.setItem("user_id", data.userId);
+      localStorage.setItem("token", data.token);
       // Redirect to landing
       window.location.replace("/");
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   return (
     <div
       className="
-    bg-[url('assets/images/blue-background.webp')] 
     bg-no-repeat bg-center bg-cover 
     w-full h-auto lg:h-screen 
     flex justify-center items-center 
     px-4 py-20"
+      style={{
+        background: "url(../../../public/assets/images/blue-background.webp)",
+      }}
     >
       <div className="flex flex-col lg:flex-row justify-center gap-x-10 gap-y-4 bg-white w-full max-w-[1064px] h-auto rounded-[24px] md:rounded-[40px] p-[24px] md:p-[32px] lg:p-[40px] select-none">
         <div className="w-full lg:w-auto flex-auto lg:flex-1 flex justify-start lg:justify-center items-center self-center">
@@ -79,7 +84,9 @@ export default function Login() {
 
             <span
               id="error_msg"
-              className={`${showErrorMessage ? 'block' : 'hidden'} absolute text-red-500 text-sm ml-1`}
+              className={`${
+                showErrorMessage ? "block" : "hidden"
+              } absolute text-red-500 text-sm ml-1`}
             >
               Username atau Password salah!
             </span>
@@ -138,7 +145,7 @@ export default function Login() {
             </button>
             <div className="text-center mt-3">
               <span className="text-[#474F7C] text-sm md:text-base">
-                Belum punya akun? {" "}
+                Belum punya akun?{" "}
                 <Link to={"/signup"} className="font-semibold">
                   Klik disini
                 </Link>

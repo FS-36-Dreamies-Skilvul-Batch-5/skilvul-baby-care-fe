@@ -26,7 +26,11 @@ export default function ArticleCard(props) {
         </td>
         <td className="text-[#898989] text-center py-3.5">{title}</td>
         <td className="text-[#898989] text-center py-3.5">{name}</td>
-        <td className="text-[#898989] text-center py-3.5">{img_url ? img_url : '-'}</td>
+        <td className="text-[#898989] text-center py-3.5 px-4">
+          {img_url ? (
+            <img src={img_url} alt={title} className="w-24 aspect-video object-cover mx-auto rounded-lg" />
+          ) : '-'}
+        </td>
         <td className="text-[#898989] text-center py-3.5">{convertHumanReadDateFormat(posted_on)}</td>
         <td className="text-[#898989] text-center py-3.5 px-5">
           <span className="w-full flex justify-center gap-x-2">

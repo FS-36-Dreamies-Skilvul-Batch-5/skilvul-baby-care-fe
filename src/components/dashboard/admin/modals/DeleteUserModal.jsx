@@ -7,7 +7,7 @@ export default function DeleteUserModal({
 
     try {
       const response = await fetch(
-        `http://localhost:3000/users/${user_id}`,
+        `${import.meta.env.VITE_API_URL}/users/${user_id}`,
         {
           method: "DELETE",
           headers: {

@@ -19,7 +19,7 @@ export default function ArticleCategory() {
 
   const fetchArticleCategories = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/article-categories`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/article-categories`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

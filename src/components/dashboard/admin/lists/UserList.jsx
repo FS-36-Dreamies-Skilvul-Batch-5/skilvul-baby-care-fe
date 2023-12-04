@@ -10,7 +10,6 @@ export default function UserList({users}) {
             <th className="text-[#272C49] text-center py-2">Nama</th>
             <th className="text-[#272C49] text-center py-2">Username</th>
             <th className="text-[#272C49] text-center py-2">Email</th>
-            <th className="text-[#272C49] text-center py-2">Image URL</th>
             <th className="text-[#272C49] text-center py-2">Role</th>
             <th className="text-[#272C49] text-center py-2">Aksi</th>
           </tr>

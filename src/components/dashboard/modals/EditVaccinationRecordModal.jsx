@@ -24,7 +24,7 @@ export default function EditVaccinationRecordModal({ vaccine_info, handleEditMod
 
     try {
       const response = await fetch(
-        `http://localhost:3000/vaccination-records/${vaccination_record_id}`,
+        `${import.meta.env.VITE_API_URL}/vaccination-records/${vaccination_record_id}`,
         {
           method: "PUT",
           headers: {
@@ -52,7 +52,7 @@ export default function EditVaccinationRecordModal({ vaccine_info, handleEditMod
 
     try {
       const response = await fetch(
-        `http://localhost:3000/vaccination-records/${vaccination_record_id}`,
+        `${import.meta.env.VITE_API_URL}/vaccination-records/${vaccination_record_id}`,
         {
           method: "GET",
           headers: {

@@ -17,7 +17,7 @@ export default function MonitoringList() {
   const fetchData = async (endpoint) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/${endpoint}`,
+        `${import.meta.env.VITE_API_URL}/${endpoint}`,
         {
           method: "GET",
           headers: {

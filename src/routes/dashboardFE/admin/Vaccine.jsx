@@ -16,7 +16,7 @@ export default function Vaccine() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/vaccines`,
+        `${import.meta.env.VITE_API_URL}/vaccines`,
         {
           method: "GET",
           headers: {

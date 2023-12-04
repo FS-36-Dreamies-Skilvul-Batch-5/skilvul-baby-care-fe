@@ -63,7 +63,7 @@ export default function FirstAddModal() {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/babies", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/babies`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

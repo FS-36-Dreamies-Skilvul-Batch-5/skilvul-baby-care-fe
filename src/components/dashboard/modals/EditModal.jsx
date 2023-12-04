@@ -21,7 +21,7 @@ export default function EditModal({ nutrition_record, handleEditModal }) {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/nutrition-records/${nutrition_record.id}`,
+        `${import.meta.env.VITE_API_URL}/nutrition-records/${nutrition_record.id}`,
         {
           method: "PUT",
           headers: {

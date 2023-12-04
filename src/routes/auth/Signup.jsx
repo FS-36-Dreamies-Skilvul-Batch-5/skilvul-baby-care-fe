@@ -26,20 +26,20 @@ export default function Signup() {
   const submit = async (e) => {
     e.preventDefault();
 
-    if(registerFormData.isAgree){
+    if (registerFormData.isAgree) {
       setShowErrorMessage(false);
 
       try {
-        const response = await fetch("http://localhost:3000/auth/register", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(registerFormData),
         });
-  
+
         if (!response.ok) {
           return;
         }
-  
+
         const data = await response.json();
         console.log(data);
         // Redirect to Register Success
@@ -53,8 +53,10 @@ export default function Signup() {
   };
   return (
     <div
-      className="bg-[url('assets/images/blue-background.webp')]  bg-no-repeat bg-center bg-cover 
-    w-full h-screen flex justify-center items-center px-4 py-20"
+      className="bg-no-repeat bg-center bg-cover w-full h-screen flex justify-center items-center px-4 py-20"
+      style={{
+        background: "url(../../../public/assets/images/blue-background.webp)",
+      }}
     >
       <form
         id="signup_form"
@@ -69,7 +71,9 @@ export default function Signup() {
 
             <span
               id="warning_msg"
-              className={`${showErrorMessage ? 'block' : 'hidden'} absolute text-red-500 text-sm ml-1`}
+              className={`${
+                showErrorMessage ? "block" : "hidden"
+              } absolute text-red-500 text-sm ml-1`}
             >
               Terima ketentuan & kebijakan privasi!
             </span>

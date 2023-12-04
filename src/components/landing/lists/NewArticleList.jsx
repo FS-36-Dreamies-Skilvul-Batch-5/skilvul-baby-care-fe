@@ -7,7 +7,7 @@ export default function NewArticleList({activeArticleId}) {
 
   const fetchArticles = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/articles`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/articles`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

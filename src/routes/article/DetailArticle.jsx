@@ -74,7 +74,7 @@ export default function DetailArticle() {
 
             <div>
               <img
-                src={`http://localhost:3000/article-image/${article.img_url}`}
+                src={article.img_url}
                 alt={article.title}
                 className="w-full h-[400px] rounded-xl object-cover"
               ></img>

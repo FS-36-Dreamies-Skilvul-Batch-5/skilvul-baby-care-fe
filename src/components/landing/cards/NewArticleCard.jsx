@@ -13,7 +13,7 @@ export default function NewArticleCard(props) {
       <Link to={`/articles/${id}`} reloadDocument>
         <div className="shrink-0 w-[100px] lg:w-[120px] h-[100px] lg:h-[120px]">
           <img
-            src={`http://localhost:3000/article-image/${img_url}`}
+            src={img_url}
             alt={title}
             className="w-full aspect-square object-cover rounded-xl"
           ></img>

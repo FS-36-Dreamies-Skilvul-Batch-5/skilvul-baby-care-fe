@@ -21,7 +21,7 @@ export default function AddModal({ handleAddModal }) {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/nutrition-records`,
+        `${import.meta.env.VITE_API_URL}/nutrition-records`,
         {
           method: "POST",
           headers: {

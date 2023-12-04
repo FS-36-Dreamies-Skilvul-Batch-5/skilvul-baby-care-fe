@@ -20,7 +20,7 @@ export default function UserProfileCard() {
     const userId = localStorage.getItem("user_id");
 
     try {
-      const response = await fetch(`http://localhost:3000/users/${userId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users/${userId}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
@@ -54,7 +54,7 @@ export default function UserProfileCard() {
             <img
               src={`${
                 userData.img_url !== ""
-                  ? `http://localhost:3000/user-image/${userData.img_url}`
+                  ? `${userData.img_url}`
                   : "../assets/images/users/user-default.png"
               }`}
               alt="User's Profile Picture"

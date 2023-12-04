@@ -11,7 +11,7 @@ export default function BigArticleCard({ article }) {
         <Link to={`/articles/${id}`}>
           <div>
             <img
-              src={`http://localhost:3000/article-image/${img_url}`}
+              src={img_url}
               alt={title}
               className="w-full h-[310px] rounded-xl object-cover"
             ></img>

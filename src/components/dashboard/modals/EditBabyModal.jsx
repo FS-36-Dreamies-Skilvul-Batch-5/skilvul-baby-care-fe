@@ -20,7 +20,7 @@ export default function EditBabyModal({ babyData, handleEditModal }) {
     const babyId = localStorage.getItem("baby_id");
 
     try {
-      const response = await fetch(`http://localhost:3000/babies/${babyId}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/babies/${babyId}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

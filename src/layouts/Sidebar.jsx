@@ -18,7 +18,7 @@ export default function Sidebar() {
   return (
     <>
       <aside className="hidden min-[840px]:flex fixed top-0 left-0 flex-col justify-between items-center bg-[#272C49] h-screen px-[14px] py-[40px] max-w-[80px]">
-        <Link to="/dashboard">
+        <Link to="/">
           <img
             src="../assets/icons/only-baby-logo.png"
             alt="Only Baby Care Logo"
@@ -195,7 +195,7 @@ export default function Sidebar() {
             <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
           </svg>
         </button>
-        <Link to="/dashboard">
+        <Link to="/">
           <img
             src="../assets/icons/only-baby-logo.png"
             alt="Only Baby Care Logo"

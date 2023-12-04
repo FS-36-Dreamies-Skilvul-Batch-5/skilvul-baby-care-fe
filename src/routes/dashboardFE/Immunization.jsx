@@ -19,14 +19,14 @@ export default function Immunization() {
   
     try {
       const [immunizationResponse, vaccinationRecordResponse] = await Promise.all([
-        fetch(`http://localhost:3000/vaccines`, {
+        fetch(`${import.meta.env.VITE_API_URL}/vaccines`, {
           method: "GET",
           headers: {
             "content-type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }),
-        fetch(`http://localhost:3000/babies/${babyId}/vaccination-records`, {
+        fetch(`${import.meta.env.VITE_API_URL}/babies/${babyId}/vaccination-records`, {
           method: "GET",
           headers: {
             "content-type": "application/json",

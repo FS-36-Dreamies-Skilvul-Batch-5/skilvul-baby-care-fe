@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 export default function Profile(){
   const [userData, setUserData] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const userId = localStorage.getItem('user_id');
   const token = localStorage.getItem('token');
 
@@ -24,6 +25,7 @@ export default function Profile(){
 
       const data = await response.json();
       setUserData(data.data);
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -34,10 +36,19 @@ export default function Profile(){
   }, [])
   return(
     <div className="flex items-center gap-x-3">
-      <img src={userData.img_url !== null ? `${userData.img_url}` : "../assets/images/users/user-default.png"}
-        alt="User's Profile Picture"
-        className="w-[50px] h-[50px] shrink-0 border-2 border-[#272C49] rounded-full object-cover"
-      ></img>
+      {!isLoading ? (
+        <img
+          src={
+            userData.img_url !== ""
+              ? `${userData.img_url}`
+              : "../assets/images/users/user-default.png"
+          }
+          alt="User's Profile Picture"
+          className="w-[50px] h-[50px] shrink-0 border-2 border-[#272C49] rounded-full object-cover"
+        ></img>
+      ) : (
+        <div className="w-[50px] h-[50px] shrink-0 bg-gray-200 animate-pulse rounded-full object-cover"></div>
+      )}
       <div>
         <h1 id="user_full_name" className="font-semibold text-[#272C49] text-lg">
           {userData.name}

@@ -68,7 +68,7 @@ export default function Navbar({ logoPath }){
         </div>
 
         {/* Mobile Modal */}
-        <div className={`${showMobileNavigation ? 'translate-y-0' : 'translate-y-[100%]'} fixed top-0 left-0 w-full h-screen bg-[#272C49] px-4 flex sm:hidden justify-center items-center duration-500 ease-in-out z-[999]`}>
+        <div className={`${showMobileNavigation ? 'translate-y-0' : 'translate-y-[100%]'} fixed top-0 left-0 w-full h-screen bg-[#272C49] px-4 flex lg:hidden justify-center items-center duration-500 ease-in-out z-[999]`}>
           <div className="w-full">
             <nav>
               <ul className="flex flex-col justify-center items-center gap-y-6">

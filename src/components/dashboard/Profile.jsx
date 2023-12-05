@@ -26,7 +26,6 @@ export default function Profile(){
       const data = await response.json();
       setUserData(data.data);
       setIsLoading(false);
-      console.log(data.data);
     } catch (err) {
       console.log(err);
     }
@@ -40,9 +39,9 @@ export default function Profile(){
       {!isLoading ? (
         <img
           src={
-            userData.img_url !== ""
+            userData.img_url !== "" 
               ? `${userData.img_url}`
-              : "../assets/images/users/user-default.png"
+              : "/assets/images/users/user-default.png"
           }
           alt="User's Profile Picture"
           className="w-[50px] h-[50px] shrink-0 border-2 border-[#272C49] rounded-full object-cover"

@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import UserDefault from "../../assets/user-default.png"
 
 export default function Profile(){
-  const [userData, setUserData] = useState('');
+  const [userData, setUserData] = useState({
+    username: "",
+    name: "",
+    img_url: "",
+  });
   const [isLoading, setIsLoading] = useState(true);
   const userId = localStorage.getItem('user_id');
   const token = localStorage.getItem('token');

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import BlueBackground from "../../assets/blue-background.webp";
 
 export default function Login() {
   const [loginFormData, setLoginFormData] = useState({
@@ -25,11 +26,14 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(loginFormData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/auth/login`,
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(loginFormData),
+        }
+      );
 
       if (!response.ok) {
         setShowErrorMessage(true);
@@ -52,12 +56,12 @@ export default function Login() {
   return (
     <div
       className="
-    bg-no-repeat bg-center bg-cover 
-    w-full h-auto lg:h-screen 
-    flex justify-center items-center 
-    px-4 py-20"
+        bg-no-repeat bg-center bg-cover 
+        w-full h-auto lg:h-screen 
+        flex justify-center items-center 
+        px-4 py-20"
       style={{
-        background: "url(../../../public/assets/images/blue-background.webp)",
+        background: `url(${BlueBackground})`,
       }}
     >
       <div className="flex flex-col lg:flex-row justify-center gap-x-10 gap-y-4 bg-white w-full max-w-[1064px] h-auto rounded-[24px] md:rounded-[40px] p-[24px] md:p-[32px] lg:p-[40px] select-none">

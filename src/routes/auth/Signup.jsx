@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import BlueBackground from "../../assets/blue-background.webp"
 
 export default function Signup() {
   const [registerFormData, setRegisterFormData] = useState({
@@ -55,7 +56,7 @@ export default function Signup() {
     <div
       className="bg-no-repeat bg-center bg-cover w-full h-screen flex justify-center items-center px-4 py-20"
       style={{
-        background: "url(../../../public/assets/images/blue-background.webp)",
+        background: `url(${BlueBackground})`,
       }}
     >
       <form

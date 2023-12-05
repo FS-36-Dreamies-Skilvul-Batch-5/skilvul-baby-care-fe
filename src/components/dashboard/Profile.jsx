@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import UserDefault from "../../assets/user-default.png"
 
 export default function Profile(){
   const [userData, setUserData] = useState('');
@@ -41,7 +42,7 @@ export default function Profile(){
           src={
             userData.img_url !== "" 
               ? `${userData.img_url}`
-              : "/assets/images/users/user-default.png"
+              : UserDefault
           }
           alt="User's Profile Picture"
           className="w-[50px] h-[50px] shrink-0 border-2 border-[#272C49] rounded-full object-cover"

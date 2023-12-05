@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import EditUserModal from "../modals/EditUserModal";
+import UserDefault from "../../../assets/user-default.png"
 
 export default function UserProfileCard() {
   const [userData, setUserData] = useState('');
@@ -50,7 +51,7 @@ export default function UserProfileCard() {
               src={`${
                 userData.img_url !== ""
                   ? `${userData.img_url}`
-                  : "/assets/images/users/user-default.png"
+                  : UserDefault
               }`}
               alt="User's Profile Picture"
               className="mt-2 mx-auto w-[80px] h-[80px] shrink-0 border-2 border-[#272C49] rounded-full object-cover"

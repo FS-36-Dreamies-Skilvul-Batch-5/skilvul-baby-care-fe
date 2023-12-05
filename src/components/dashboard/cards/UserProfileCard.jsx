@@ -2,12 +2,7 @@ import { useState, useEffect } from "react";
 import EditUserModal from "../modals/EditUserModal";
 
 export default function UserProfileCard() {
-  const [userData, setUserData] = useState({
-    name: "",
-    username: "",
-    email: "",
-    img_url: "",
-  });
+  const [userData, setUserData] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [showEditUserModal, setShowEditUserModal] = useState(false);
 
@@ -53,7 +48,7 @@ export default function UserProfileCard() {
           {!isLoading ? (
             <img
               src={`${
-                userData.img_url !== "" || userData.img_url !== null
+                userData.img_url !== ""
                   ? `${userData.img_url}`
                   : "../assets/images/users/user-default.png"
               }`}

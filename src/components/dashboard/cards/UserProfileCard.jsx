@@ -3,7 +3,11 @@ import EditUserModal from "../modals/EditUserModal";
 import UserDefault from "../../../assets/user-default.png"
 
 export default function UserProfileCard() {
-  const [userData, setUserData] = useState('');
+  const [userData, setUserData] = useState({
+    username: "",
+    name: "",
+    img_url: "",
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [showEditUserModal, setShowEditUserModal] = useState(false);
 

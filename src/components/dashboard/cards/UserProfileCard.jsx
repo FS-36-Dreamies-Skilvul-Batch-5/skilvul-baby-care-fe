@@ -53,7 +53,7 @@ export default function UserProfileCard() {
           {!isLoading ? (
             <img
               src={`${
-                userData.img_url !== ""
+                userData.img_url !== "" || userData.img_url !== null
                   ? `${userData.img_url}`
                   : "../assets/images/users/user-default.png"
               }`}
